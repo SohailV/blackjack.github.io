@@ -1,71 +1,72 @@
 
-let num = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
-    "Eight", "Nine", "Ten", "Jack", "Queen", "King"];
+let array = {
+    num: ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
+        "Eight", "Nine", "Ten", "Jack", "Queen", "King"],
 
-let shape = ["Heart", "Spade", "Diamond", "Club"];
+    shape: ["Heart", "Spade", "Diamond", "Club"],
 
-let numValue = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
+    numValue: [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10],
 
-let playerValue = 0;
-let dealerValue = 0;
-let deal = document.getElementById("deal");
-let hit = document.getElementById("hit");
-let hold = document.getElementById("hold");
-let isAce = false;
+};
+
+let tags = {
+    deal: document.getElementById("deal"),
+    hit: document.getElementById("hit"),
+    hold: document.getElementById("hold"),
+    player: document.getElementById("player"),
+    dealer: document.getElementById("dealer"),
+    pscore: document.getElementById('pscore'),
+    dscore: document.getElementById('dscore'),
+};
+
+let values = {
+    playerValue: 0,
+    dealerValue: 0,
+    isAce: false,
+};
+
+let cardNum = () => Math.floor(Math.random() * array.num.length);
+let cardShape = () => Math.floor(Math.random() * array.shape.length);
+let numOfCard = () => array.num[cardNum()];
+let shapeOfCard = () => array.shape[cardShape()];
+
+
 function dealing() {
 
-    for (let i = 0; i < 2; i++) {
 
-        let element = document.createElement('p');
-        element.id = "para" + i;
-        element.className = "target";
-        let handNum = num[Math.floor(Math.random() * num.length)];
-        let handShape = shape[Math.floor(Math.random() * shape.length)];
-        let hand = handNum + " of " + handShape;
-        document.getElementById("player").appendChild(element);
-        element.textContent = hand;
-        playerValue += numValue[num.indexOf(handNum)];
-        //        //console.log(playerValue);
-        if (playerValue == 21) {
-            //console.log('dealing value');
-            let result = document.createElement('p');
-            result.textContent = "You Win";
-            result.style.cssText = "background:white;";
-            document.body.appendChild(result);
-            document.getElementById("deal").disabled = false;
-            document.getElementById("hit").disabled = true;
-            document.getElementById("hold").disabled = true;
+    for (let i = 2; i < 6; i++) {
+        let j = i % 2;
+        if (j === 0) {
+
+            let para = document.createElement('p');
+            para.id = "para" + i;
+            let numOnCard = numOfCard();
+            para.textContent = numOnCard + " of " + shapeOfCard();
+            tags.player.appendChild(para);
+            values.playerValue += array.numValue[array.num.indexOf(numOnCard)];
+            pscore.textContent = values.playerValue;
         }
-        //check isAce is true or false
-        if (handNum == "Ace") {
-            //set isAce=true
-            isAce = true;
+        else {
+            let para = document.createElement('p');
+            para.id = "para" + i;
+            let numOnCard = numOfCard();
+            para.textContent = numOnCard + " of " + shapeOfCard();
+            tags.dealer.appendChild(para);
+            values.dealerValue += array.numValue[array.num.indexOf(numOnCard)];
+            dscore.textContent = values.dealerValue;
+       
         }
-
-
-
     }
-
-    for (let i = 10; i < 12; i++) {
-        let element = document.createElement('p');
-        element.id = "para" + i;
-        let handNum = num[Math.floor(Math.random() * num.length)];
-        let handShape = shape[Math.floor(Math.random() * shape.length)];
-        let hand = handNum + " of " + handShape;
-        document.getElementById("dealer").appendChild(element);
-        element.textContent = hand;
-        dealerValue += numValue[num.indexOf(handNum)];
-        //console.log(dealerValue);
-    }
-
-    document.getElementById("deal").disabled = true;
-    document.getElementById('pscore').textContent = "Player Total: " + playerValue;
-    document.getElementById('dscore').textContent = "Dealer Total: " + dealerValue;
+    tags.deal.disabled = true;
 
 }
 
 
 function hitme() {
+    // Tasks
+    // end game on win and disable everything
+    // add dealer logic 
+    // generalize same logic to function
     console.log(isAce);
     let element = document.createElement('p');
     element.className = "target";
@@ -83,43 +84,17 @@ function hitme() {
     playerValue += cardValue;
 
     //currenthand is ace
-    if (handNum == "Ace") {
+    if (handNum === "Ace") {
         isAce = true;
     }
     //check if total had ace
     //Check if greater than 21 set cardvalue as 1      
-    if (isAce == true && playerValue > 21) {
+    if (isAce && playerValue > 21) {
 
         playerValue -= 10;
         isAce = false;
     }
-    // if (playerValue > 21) {
 
-    //     let target = document.getElementsByClassName("target");
-
-    //     // for (let i = 0; i < target.length; i++) {
-    //     //     if (target[i].textContent.includes("Ace")) {
-    //     //         ////console.log('found Ace');
-
-    //     //        // playerValue -= 10;
-    //     //         //console.log("inside get ace");
-    //     //         document.getElementById('pscore').textContent = "Player Total: " + playerValue;
-
-    //     //     }
-
-    //     // }
-
-    //     document.getElementById('pscore').textContent = "Player Total: " + playerValue;
-    //  //   //console.log(" in hit me");
-    //    // if (playerValue === 21) {
-    //         let result = document.createElement('p');
-    //         result.textContent = "You Lose";
-    //         result.style.cssText = "background:white;";
-    //         document.body.appendChild(result);
-    //         document.getElementById("deal").disabled = false;
-    //     //}
-
-    // }
     document.getElementById('pscore').textContent = "Player Total: " + playerValue;
     //console.log(playerValue);
     if (playerValue > 21) {
@@ -141,38 +116,9 @@ function hitme() {
 }
 
 
-//     //console.log('found Ace' + boolvalue);
-//     return boolvalue;
-// }
-//     //console.log(bool() + " bool here"); 
-
-//     if(playerValue > 21 && bool()) {
-//     numValue[0] = 1;
-//     //console.log(numValue[0] + "from array");
-//     playerValue -= 10;
-//     bool = () => {
-//         return false;
-//     } 
-//     document.getElementById('pscore').textContent = "Player Total: " + playerValue;
-//     //console.log(bool() + " inside double condition");
-//     return bool();
-//     }
-//     else 
-//     if (playerValue > 21) {
-
-//             let result = document.createElement('p');
-//             result.textContent = "You Lose";
-//             result.style.cssText = "background:white;";
-//             document.body.appendChild(result);
-//             document.getElementById('pscore').textContent = "Player Total: " + playerValue;
-//             //console.log("You Lose");
-//             document.getElementById("hit").disabled = true;
-//             document.getElementById("hold").disabled = true;    
-//         }  
-//     }
-// }
 
 function onHold() {
+    // on hold switch hitme() to dealerValue
     let hold = document.getElementById('dscore');
     hold.style.cssText = "display:inline-block;";
     let para11 = document.getElementById('para11');
@@ -184,3 +130,18 @@ function onHold() {
 deal.addEventListener('click', dealing);
 hit.addEventListener('click', hitme);
 hold.addEventListener('click', onHold);
+
+
+// if (values.playerValue == 21 && values.dealerValue == 21) {
+//     let result = document.createElement('p');
+//     result.textContent = "It's a Tie";
+//     result.style.cssText = "background:white;";
+//     document.body.appendChild(result);
+
+// } else if (values.playerValue == 21) {
+//     let result = document.createElement('p');
+//     result.textContent = "You Win";
+//     result.style.cssText = "background:white;";
+//     document.body.appendChild(result);
+
+// } 
