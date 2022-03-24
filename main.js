@@ -1,14 +1,10 @@
 
 let array = {
-    num: ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
-        "Eight", "Nine", "Ten", "Jack", "Queen", "King"],
-
-    shape: ["Heart", "Spade", "Diamond", "Club"],
-
+    num: ["A", "2", "3", "4", "5", "6", "7",
+        "8", "9", "10", "J", "Q", "K"],
+    shape: ["\u2764", "\u2660", "\u2666", "\u2663"],
     numValue: [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10],
-
 };
-
 let tags = {
     deal: document.getElementById("deal"),
     hit: document.getElementById("hit"),
@@ -22,7 +18,6 @@ let tags = {
     bet: document.getElementById('bet'),
     label: document.getElementById('label'),
 };
-
 let values = {
     playerValue: 0,
     dealerValue: 0,
@@ -31,7 +26,6 @@ let values = {
     chips: 500,
     roundStatus: "initial",
 };
-
 let cardNum = () => Math.floor(Math.random() * array.num.length);
 let cardShape = () => Math.floor(Math.random() * array.shape.length);
 let numOfCard = () => array.num[cardNum()];
@@ -68,24 +62,33 @@ function finalResult(text) {
     tags.hit.disabled = true;
     tags.hold.disabled = true;
 }
-
+let shapeArray = [];
 function dealing() {
-
-
     if (isNaN(tags.bet.value) || tags.bet.value == 0 || tags.bet.value > values.chips) {
         label.textContent = "Enter a valid Amount";
         label.style.cssText = "color:red;";
     } else {
-
         for (let i = 2; i < 6; i++) {
             let j = i % 2;
             if (j === 0) {
-
+                // debugger;
                 let para = document.createElement('p');
                 para.id = "para" + i;
+                para.className = "cards";
                 let numOnCard = numOfCard();
                 // let numOnCard = array.num[0];
-                para.textContent = numOnCard + " of " + shapeOfCard();
+                let shapeOnCard = shapeOfCard();
+                if(numOnCard == "J" || numOnCard == "Q" || numOnCard == "K" || numOnCard == "A") {
+                    para.textContent = numOnCard + " of " + shapeOnCard;    
+                }else {
+                    for (j = 0; j < [numOnCard]; j++) {
+                        shapeArray.push(shapeOnCard);
+                    }
+                    para.textContent = numOnCard + " of " + shapeArray.join(" ");
+                }
+                
+                // console.log(shapeArray);
+                
                 tags.player.appendChild(para);
                 values.playerValue += array.numValue[array.num.indexOf(numOnCard)];
                 pscore.textContent = "Player Total: " + values.playerValue;
@@ -94,8 +97,7 @@ function dealing() {
                     // debugger;
                     let text = "Lets check out the dealer";
                     finalResult(text);
-
-                } else if (numOnCard === "Ace") {
+                } else if (numOnCard === "A") {
                     values.pIsAce = true;
                     if (values.playerValue > 21) {
                         values.playerValue -= 10;
@@ -106,23 +108,22 @@ function dealing() {
             else {
                 let para = document.createElement('p');
                 para.id = "para" + i;
+                para.className = "cards";
                 let numOnCard = numOfCard();
                 // let numOnCard = array.num[1];
                 para.textContent = numOnCard + " of " + shapeOfCard();
                 tags.dealer.appendChild(para);
                 values.dealerValue += array.numValue[array.num.indexOf(numOnCard)];
                 dscore.textContent = "Dealer Total: " + values.dealerValue;
-
-                if (numOnCard === "Ace") {
+                if (numOnCard === "A") {
                     values.dIsAce = true;
                     if (values.dealerValue > 21) {
                         values.dealerValue -= 10;
                         dscore.textContent = "Dealer Total: " + values.dealerValue;
                     }
-
                 }
-
             }
+            shapeArray = [];
         }
         tags.deal.disabled = true;
         tags.hit.disabled = false;
@@ -134,33 +135,28 @@ function dealing() {
         tags.chips.textContent = "Total Chips : " + values.chips;
         tags.bet.disabled = true;
         tags.bet.style.cssText = "color: red;";
-
         if (values.playerValue === 21) {
             onHold();
         }
-
     }
-
 }
-
 
 function hitme() {
     // debugger;
     let para = document.createElement('p');
-    para.className = "target";
+    para.className = "cards";
     let numOnCard = numOfCard();
     // let numOnCard = array.num[1];
     para.textContent = numOnCard + " of " + shapeOfCard();
     tags.player.appendChild(para);
     values.playerValue += array.numValue[array.num.indexOf(numOnCard)];
     pscore.textContent = "Player Total: " + values.playerValue;
-
     if (values.playerValue > 21) {
         if (values.pIsAce) {
             values.playerValue -= 10;
             pscore.textContent = "Player Total: " + values.playerValue;
             values.pIsAce = false;
-        } else if (numOnCard === "Ace") {
+        } else if (numOnCard === "A") {
             values.playerValue -= 10;
             pscore.textContent = "Player Total: " + values.playerValue;
             if (values.playerValue === 21) {
@@ -180,12 +176,10 @@ function hitme() {
         let text = "Lets check out the dealer";
         finalResult(text);
         onHold();
-    } else if (numOnCard === "Ace") {
+    } else if (numOnCard === "A") {
         values.pIsAce = true;
     }
 }
-
-
 
 function onHold() {
     // debugger;
@@ -195,49 +189,43 @@ function onHold() {
     para5.style.cssText = "display:inline-block;";
     tags.dscore.style.cssText = "display:inline-block;"
     tags.hit.disabled = true;
-
     if (values.dealerValue >= 17 && values.dealerValue < values.playerValue) {
         let text = "You Win";
         finalResult(text);
         values.roundStatus = "Won";
         chipsCalc(values.roundStatus);
-
     } else if (values.dealerValue >= 17 && values.dealerValue === values.playerValue) {
         let text = "It's a TIE";
         finalResult(text);
         values.roundStatus = "Tie";
         chipsCalc(values.roundStatus);
-
     } else if (values.dealerValue >= 17 && values.dealerValue > values.playerValue) {
         let text = "You Lose";
         finalResult(text);
         values.roundStatus = "Lost";
         chipsCalc(values.roundStatus);
-
     } else if (values.dealerValue <= 21 && values.dealerValue > values.playerValue) {
         let text = "You Lose";
         finalResult(text);
         values.roundStatus = "Lost";
         chipsCalc(values.roundStatus);
-
     } else {
         // debugger;
         for (values.dealerValue; values.dealerValue < 17;) {
             let para = document.createElement('p');
-            para.className = "target";
+            para.className = "cards";
             let numOnCard = numOfCard();
             //   let numOnCard = array.num[0];
             para.textContent = numOnCard + " of " + shapeOfCard();
             tags.dealer.appendChild(para);
             values.dealerValue += array.numValue[array.num.indexOf(numOnCard)];
             dscore.textContent = "Dealer Total: " + values.dealerValue;
-
             if (values.dealerValue > 21) {
                 if (values.dIsAce) {
                     values.dealerValue -= 10;
                     dscore.textContent = "Dealer Total: " + values.dealerValue;
                     values.dIsAce = false;
-                } else if (numOnCard === "Ace") {
+                } else if (numOnCard === "A") {
                     values.dealerValue -= 10;
                     dscore.textContent = "Dealer Total: " + values.dealerValue;
                     onHold();
@@ -253,17 +241,14 @@ function onHold() {
                 onHold();
             } else if (values.dealerValue === 21) {
                 onHold();
-            } else if (numOnCard === "Ace") {
+            } else if (numOnCard === "A") {
                 values.dIsAce = true;
             }
         }
-
     }
-
 }
 
 function resetAll() {
-
     values.playerValue = 0;
     values.dealerValue = 0;
     values.pIsAce = false;
@@ -276,6 +261,7 @@ function resetAll() {
     tags.label.textContent = "Total Chips to Bet";
     tags.bet.disabled = false;
     tags.bet.style.cssText = "color: black;";
+    shapeArray = [];
 
     while (tags.dealer.firstChild) {
         tags.dealer.removeChild(tags.dealer.firstChild);
@@ -286,9 +272,6 @@ function resetAll() {
     while (document.getElementsByClassName('result')[0]) {
         document.getElementsByClassName('result')[0].remove();
     }
-
-
-
 }
 
 deal.addEventListener('click', dealing);

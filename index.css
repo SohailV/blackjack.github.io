@@ -65,3 +65,11 @@ hold:disabled {
     margin-top: 40px;
     right: 8px;
 }
+.cards {
+    width: 90px;
+    height: 100px;
+    text-align: center;
+    font-size: large;
+    background-color: white;
+    
+}
