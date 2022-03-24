@@ -43,9 +43,25 @@ hold:disabled {
     display: none;
 }
 #pscore {
+    position: absolute;
+    background-color: aliceblue;
+    /* float: right; */
+    display: inline-block;
+    right: 8px;
+}
+#chips {
+    margin-top: 20px;
     background-color: aliceblue;
     float: right;
 }
 #para5 {
     display: none;
+}
+#label {
+    background-color: aliceblue;
+}
+#chipsInput {
+    position: absolute;
+    margin-top: 40px;
+    right: 8px;
 }
