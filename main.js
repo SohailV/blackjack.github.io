@@ -58,6 +58,17 @@ function chipsCalc(roundStatus) {
         tags.chips.textContent = "Total Chips : " + values.chips;
     }
 }
+
+function finalResult(text) {
+    let result = document.createElement('p');
+    result.className = "result";
+    result.textContent = text;
+    result.style.cssText = "background:white;";
+    document.body.appendChild(result);
+    tags.hit.disabled = true;
+    tags.hold.disabled = true;
+}
+
 function dealing() {
 
 
@@ -72,8 +83,8 @@ function dealing() {
 
                 let para = document.createElement('p');
                 para.id = "para" + i;
-                // let numOnCard = numOfCard();
-                let numOnCard = array.num[0];
+                let numOnCard = numOfCard();
+                // let numOnCard = array.num[0];
                 para.textContent = numOnCard + " of " + shapeOfCard();
                 tags.player.appendChild(para);
                 values.playerValue += array.numValue[array.num.indexOf(numOnCard)];
@@ -81,13 +92,8 @@ function dealing() {
 
                 if (values.playerValue === 21) {
                     // debugger;
-                    let result = document.createElement('p');
-                    result.className = "result";
-                    result.textContent = "Lets check out the dealer";
-                    result.style.cssText = "background:white;";
-                    document.body.appendChild(result);
-                    tags.hit.disabled = true;
-                    tags.hold.disabled = true;
+                    let text = "Lets check out the dealer";
+                    finalResult(text);
 
                 } else if (numOnCard === "Ace") {
                     values.pIsAce = true;
@@ -100,8 +106,8 @@ function dealing() {
             else {
                 let para = document.createElement('p');
                 para.id = "para" + i;
-                // let numOnCard = numOfCard();
-                let numOnCard = array.num[1];
+                let numOnCard = numOfCard();
+                // let numOnCard = array.num[1];
                 para.textContent = numOnCard + " of " + shapeOfCard();
                 tags.dealer.appendChild(para);
                 values.dealerValue += array.numValue[array.num.indexOf(numOnCard)];
@@ -142,8 +148,8 @@ function hitme() {
     // debugger;
     let para = document.createElement('p');
     para.className = "target";
-    // let numOnCard = numOfCard();
-    let numOnCard = array.num[1];
+    let numOnCard = numOfCard();
+    // let numOnCard = array.num[1];
     para.textContent = numOnCard + " of " + shapeOfCard();
     tags.player.appendChild(para);
     values.playerValue += array.numValue[array.num.indexOf(numOnCard)];
@@ -158,37 +164,22 @@ function hitme() {
             values.playerValue -= 10;
             pscore.textContent = "Player Total: " + values.playerValue;
             if (values.playerValue === 21) {
-                let result = document.createElement('p');
-                result.className = "result";
-                result.textContent = "Lets check out the dealer";
-                result.style.cssText = "background:white;";
-                document.body.appendChild(result);
+                let text = "Lets check out the dealer";
+                finalResult(text);
                 onHold();
-                tags.hit.disabled = true;
-                tags.hold.disabled = true;
             }
         }
         else {
-            let result = document.createElement('p');
-            result.className = "result";
-            result.textContent = "You Lost";
-            result.style.cssText = "background:white;";
-            document.body.appendChild(result);
-            tags.hit.disabled = true;
-            tags.hold.disabled = true;
+            let text = "You Lost";
+            finalResult(text);
             tags.reset.disabled = false;
             values.roundStatus = "Lost";
             return chipsCalc(values.roundStatus);
         }
     } else if (values.playerValue === 21) {
-        let result = document.createElement('p');
-        result.className = "result";
-        result.textContent = "Lets check out the dealer";
-        result.style.cssText = "background:white;";
-        document.body.appendChild(result);
+        let text = "Lets check out the dealer";
+        finalResult(text);
         onHold();
-        tags.hit.disabled = true;
-        tags.hold.disabled = true;
     } else if (numOnCard === "Ace") {
         values.pIsAce = true;
     }
@@ -206,48 +197,28 @@ function onHold() {
     tags.hit.disabled = true;
 
     if (values.dealerValue >= 17 && values.dealerValue < values.playerValue) {
-        let result = document.createElement('p');
-        result.className = "result";
-        result.textContent = "You Win";
-        result.style.cssText = "background:white;";
-        document.body.appendChild(result);
-        tags.hit.disabled = true;
-        tags.hold.disabled = true;
+        let text = "You Win";
+        finalResult(text);
         values.roundStatus = "Won";
-        return chipsCalc(values.roundStatus);
+        chipsCalc(values.roundStatus);
 
     } else if (values.dealerValue >= 17 && values.dealerValue === values.playerValue) {
-        let result = document.createElement('p');
-        result.className = "result";
-        result.textContent = "It's a TIE";
-        result.style.cssText = "background:white;";
-        document.body.appendChild(result);
-        tags.hit.disabled = true;
-        tags.hold.disabled = true;
+        let text = "It's a TIE";
+        finalResult(text);
         values.roundStatus = "Tie";
-        return chipsCalc(values.roundStatus);
+        chipsCalc(values.roundStatus);
 
     } else if (values.dealerValue >= 17 && values.dealerValue > values.playerValue) {
-        let result = document.createElement('p');
-        result.className = "result";
-        result.textContent = "You Lose";
-        result.style.cssText = "background:white;";
-        document.body.appendChild(result);
-        tags.hit.disabled = true;
-        tags.hold.disabled = true;
+        let text = "You Lose";
+        finalResult(text);
         values.roundStatus = "Lost";
-        return chipsCalc(values.roundStatus);
+        chipsCalc(values.roundStatus);
 
     } else if (values.dealerValue <= 21 && values.dealerValue > values.playerValue) {
-        let result = document.createElement('p');
-        result.className = "result";
-        result.textContent = "You Lose";
-        result.style.cssText = "background:white;";
-        document.body.appendChild(result);
-        tags.hit.disabled = true;
-        tags.hold.disabled = true;
+        let text = "You Lose";
+        finalResult(text);
         values.roundStatus = "Lost";
-        return chipsCalc(values.roundStatus);
+        chipsCalc(values.roundStatus);
 
     } else {
         // debugger;
@@ -255,7 +226,7 @@ function onHold() {
             let para = document.createElement('p');
             para.className = "target";
             let numOnCard = numOfCard();
-            // let numOnCard = array.num[0];
+            //   let numOnCard = array.num[0];
             para.textContent = numOnCard + " of " + shapeOfCard();
             tags.dealer.appendChild(para);
             values.dealerValue += array.numValue[array.num.indexOf(numOnCard)];
@@ -269,22 +240,14 @@ function onHold() {
                 } else if (numOnCard === "Ace") {
                     values.dealerValue -= 10;
                     dscore.textContent = "Dealer Total: " + values.dealerValue;
-                    if (values.dealerValue === 21) {
-                        onHold();
-                    }
-                } else if (values.dealerValue >= 17 && values.dealerValue < 21) {
                     onHold();
                 }
                 else {
-                    let result = document.createElement('p');
-                    result.className = "result";
-                    result.textContent = "You Win";
-                    result.style.cssText = "background:white;";
-                    document.body.appendChild(result);
-                    tags.hit.disabled = true;
-                    tags.hold.disabled = true;
+
+                    let text = "You Win";
+                    finalResult(text);
                     values.roundStatus = "Won";
-                    return chipsCalc(values.roundStatus);
+                    chipsCalc(values.roundStatus);
                 }
             } else if (values.dealerValue >= 17 && values.dealerValue < 21) {
                 onHold();
