@@ -2,7 +2,6 @@
 let array = {
     num: ["A", "2", "3", "4", "5", "6", "7",
         "8", "9", "10", "J", "Q", "K"],
-            // Heart, Spade, Diamond, club    
     shape: ["\u2764", "\u2660", "\u2666", "\u2663"],
     numValue: [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10],
 };
@@ -91,7 +90,6 @@ function dealing() {
                     para1.textContent = numOnCard + " of " + shapeOnCard;    
                     div.appendChild(para1);
                 }else {
-                    if(shapeOnCard == )
                     for (j = 0; j < [numOnCard]; j++) {
                         shapeArray.push(shapeOnCard);
                     }
