@@ -1,10 +1,12 @@
-
+//array for the cards
 let array = {
     num: ["A", "2", "3", "4", "5", "6", "7",
         "8", "9", "10", "J", "Q", "K"],
+            // Heart, Spade, Diamond, club    
     shape: ["\u2764", "\u2660", "\u2666", "\u2663"],
     numValue: [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10],
 };
+//object for all the tags.
 let tags = {
     deal: document.getElementById("deal"),
     hit: document.getElementById("hit"),
@@ -26,6 +28,7 @@ let values = {
     chips: 500,
     roundStatus: "initial",
 };
+//Math random function for card deal.
 let cardNum = () => Math.floor(Math.random() * array.num.length);
 let cardShape = () => Math.floor(Math.random() * array.shape.length);
 let numOfCard = () => array.num[cardNum()];
@@ -38,6 +41,7 @@ tags.label.textContent = "Total Chips to Bet";
 tags.bet.value = 1;
 
 function chipsCalc(roundStatus) {
+    // chips calculation.
     // debugger;
     if (roundStatus == "Won") {
         values.chips += (tags.bet.value * 2);
@@ -63,6 +67,7 @@ function finalResult(text) {
     tags.hold.disabled = true;
 }
 let shapeArray = [];
+
 function dealing() {
     if (isNaN(tags.bet.value) || tags.bet.value == 0 || tags.bet.value > values.chips) {
         label.textContent = "Enter a valid Amount";
@@ -72,24 +77,40 @@ function dealing() {
             let j = i % 2;
             if (j === 0) {
                 // debugger;
-                let para = document.createElement('p');
-                para.id = "para" + i;
-                para.className = "cards";
+                let div = document.createElement('div');
+                let para1 = document.createElement('p');
+                let para2 = document.createElement('p');
+                let para3 = document.createElement('p');
+                para1.id = "para" + i;
+                //para1.className = "cards";
+                div.className = "cards";
                 let numOnCard = numOfCard();
                 // let numOnCard = array.num[0];
                 let shapeOnCard = shapeOfCard();
                 if(numOnCard == "J" || numOnCard == "Q" || numOnCard == "K" || numOnCard == "A") {
-                    para.textContent = numOnCard + " of " + shapeOnCard;    
+                    para1.textContent = numOnCard + " of " + shapeOnCard;    
+                    div.appendChild(para1);
                 }else {
+                    if(shapeOnCard == )
                     for (j = 0; j < [numOnCard]; j++) {
                         shapeArray.push(shapeOnCard);
                     }
-                    para.textContent = numOnCard + " of " + shapeArray.join(" ");
+                    para1.textContent = numOnCard;
+                    para1.className = "left";
+                    // div.textContent = para + shapeArray.join(" ") + div.appendChild(para);
+                    //div.appendChild(para).firstChild;
+                    para2.textContent = shapeArray.join(" ");
+                    para3.textContent = numOnCard;
+                    para3.className = "right";
+                    div.appendChild(para1);
+                    div.appendChild(para2);
+                    div.appendChild(para3);
+
                 }
                 
                 // console.log(shapeArray);
                 
-                tags.player.appendChild(para);
+                tags.player.appendChild(div);
                 values.playerValue += array.numValue[array.num.indexOf(numOnCard)];
                 pscore.textContent = "Player Total: " + values.playerValue;
 

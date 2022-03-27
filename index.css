@@ -73,3 +73,9 @@ hold:disabled {
     background-color: white;
     
 }
+.left {
+    text-align: left;
+}
+.right {
+    text-align: right;
+}
