@@ -1,5 +1,6 @@
 import * as main from './main.js';
 import * as chips from './chips.js';
+import * as deal from './deal.js';
 
 function onHold() {
     // debugger;
@@ -48,12 +49,13 @@ function onHold() {
             if (main.values.roundComplete) {
                 break;
             }
-            let para = document.createElement('p');
-            para.className = "cards";
-            let numOnCard = main.numOfCard();
-            // let numOnCard = main.array.num[0];
-            para.textContent = numOnCard + " of " + main.shapeOfCard();
-            main.tags.dealer.appendChild(para);
+            // let para = document.createElement('p');
+            // para.className = "cards";
+            // let numOnCard = main.numOfCard();
+            // // let numOnCard = main.array.num[0];
+            // para.textContent = numOnCard + " of " + main.shapeOfCard();
+            let cards = deal.card();
+            main.tags.dealer.appendChild(cards);
             main.values.dealerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
             main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
             if (main.values.dealerValue > 21) {

@@ -41,25 +41,36 @@
                 <label id="dscore">Dealer Total: 0</label>
                 <label id="pscore">Player Total: 0</label>
             </div>
-
         </div>
-
     </section>
-
-
-
-    <label id="chips"></label>
-    <div id="chipsInput">
-        <label id="label"></label>
-        <input type="number" id="bet" min="0" placeholder="Enter Bet">
-    </div>
-    <button id="hit">Hit</button>
-    <button id="hold">Hold</button>
-    <button id="deal">Deal</button>
-    <button id="reset">Play Again</button>
-
+    <section class="buttons-chips-area">
+        <div class="container">
+            <div class="buttons-chips">
+                <div class="buttons">
+                    <div class="single-button">
+                        <button id="hit">Hit</button>
+                    </div>
+                    <div class="single-button">
+                        <button id="hold">Hold</button>
+                    </div>
+                    <div class="single-button">
+                        <button id="deal">Deal</button>
+                    </div>
+                    <div class="single-button">
+                        <button id="reset">Play Again</button>
+                    </div>
+                </div>
+                <div class="chips">
+                    <label id="chips"></label>
+                    <div id="chipsInput">
+                        <label id="label"></label>
+                        <input type="number" id="bet" min="0" placeholder="Enter Bet">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script src="main.js" type="module"></script>
-
 </body>
 
 </html>
