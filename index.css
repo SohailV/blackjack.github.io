@@ -67,9 +67,10 @@ body {
 }
 
 div#dealer, div#player {
-    background-color: beige;
+    /* background-color: beige; */
     height: 300px;
     flex-basis: 30%;
+    display: flex;
 }
 
 .main-score {
@@ -146,9 +147,9 @@ hold:disabled {
 }
 
 
-#para5 {
+/* #para5 {
     display: none;
-}
+} */
 
 #label {
     background-color: aliceblue;
@@ -157,45 +158,41 @@ hold:disabled {
 
 .cards {
     width: 90px;
-    height: 100px;
+    height: 110px;
     text-align: center;
     font-size: large;
     background-color: white;
-    /* color: #333; */
+    border: 1px solid #ddd;
+    border-radius: 10%;
 }
 
 .left {
 
     float: left;
     text-align: left;
-    margin-top: 0%;
+    margin-top: 0;
+    padding: 1px 4px;
 
 }
+.right {
 
-#player .cards p:nth-child(2) {
-    font-size: 55px;
-}
-
-/* .right {
+    float: right;
     text-align: right;
-    margin-bottom: 0%;
-    position: absolute;
-} */
-
-/* .card2 .card3 {
-    display: flex;
-    justify-items: center;
-    flex-direction: column;
-    position: relative;
+    margin-bottom: 0;
+    padding: 1px 4px;
 
 }
-
-.card4 {
-    display: inline-flex;
-    justify-content: space-between;
-    flex-direction: row;
-    position: relative;
-    width: max-content;
-    margin: auto;
-
-} */
+#player .cards p:nth-child(2) {
+    font-size: 60px;
+    height: 50%;
+    text-align: center;
+    padding: 10px;
+    text-shadow: #7989bc 2px 3px 5px;
+}
+#dealer .cards p:nth-child(2) {
+    font-size: 60px;
+    height: 50%;
+    text-align: center;
+    padding: 10px;
+    text-shadow: #7989bc 2px 3px 5px;
+}

@@ -18,7 +18,7 @@ function card(idNo){
     let shapeOnCard = main.shapeOfCard();
 
     // Checking shape on the card to display.
-    if (shapeOnCard == "\u2764" || shapeOnCard == "\u2666") {
+    if (shapeOnCard == "\u2665" || shapeOnCard == "\u2666") {
         div.className = "cards red";
     } else {
         div.className = "cards black";
@@ -60,7 +60,7 @@ function dealing() {
                 // let shapeOnCard = main.shapeOfCard();
                 // // Checking shape on the card to display.
 
-                // if (shapeOnCard == "\u2764" || shapeOnCard == "\u2666") {
+                // if (shapeOnCard == "\u2665" || shapeOnCard == "\u2666") {
                 //     div.className = "cards red";
                 // } else {
                 //     div.className = "cards black";

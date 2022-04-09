@@ -3,12 +3,12 @@ import * as chips from './chips.js';
 import * as deal from './deal.js';
 
 function onHold() {
-    // debugger;
+    debugger;
 
     main.tags.hold.disabled = true;
     main.tags.reset.disabled = false;
-    let para5 = document.getElementById('para5');
-    para5.style.cssText = "display:inline-block;";
+    // let para5 = document.getElementById('para5');
+    // para5.style.cssText = "display:inline-block;";
     main.tags.dscore.style.cssText = "display:inline-block;"
     let scoreStyle = document.getElementsByClassName('main-score');
     scoreStyle[0].style.cssText = "justify-content: space-between;";
@@ -56,7 +56,7 @@ function onHold() {
             // para.textContent = numOnCard + " of " + main.shapeOfCard();
             let cards = deal.card();
             main.tags.dealer.appendChild(cards);
-            main.values.dealerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
+            main.values.dealerValue += main.array.numValue[main.array.num.indexOf(deal.numOnCard)];
             main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
             if (main.values.dealerValue > 21) {
                 if (main.values.dIsAce) {
@@ -80,7 +80,7 @@ function onHold() {
                 onHold();
             } else if (main.values.dealerValue === 21) {
                 onHold();
-            } else if (numOnCard === "A") {
+            } else if (deal.numOnCard === "A") {
                 main.values.dIsAce = true;
             }
         }
