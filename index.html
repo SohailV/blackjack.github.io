@@ -6,10 +6,48 @@
 </head>
 
 <body>
-    <div id="player"></div>
-    <div id="dealer"></div>
-    <label id="dscore">Dealer Total: 0</label>
-    <label id="pscore">Player Total: 0</label>
+    <header class="header-area">
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <a href="">Welcome to the Casino</a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href=#>Home</a></li>
+                        <li><a href=#about>About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="dealer-player">
+        <div class="container">
+            <div id="mainDiv">
+                <div class="header-line">
+                    <label>Dealer</label>
+                    <label>Player</label>
+                </div>
+                <div class="dealing-cards">
+                    <div id="dealer"></div>
+                    <div id="player"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="score">
+        <div class="container">
+            <div class="main-score">
+                <label id="dscore">Dealer Total: 0</label>
+                <label id="pscore">Player Total: 0</label>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
     <label id="chips"></label>
     <div id="chipsInput">
         <label id="label"></label>
@@ -19,8 +57,9 @@
     <button id="hold">Hold</button>
     <button id="deal">Deal</button>
     <button id="reset">Play Again</button>
+
     <script src="main.js" type="module"></script>
-    <script src="deal.js" type="module"></script>
+
 </body>
 
 </html>

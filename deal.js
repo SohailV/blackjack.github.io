@@ -1,13 +1,6 @@
 import * as main from './main.js';
 import * as onHold from './onhold.js';
 import * as chips from './chips.js';
-
-
-// import "main.js" as test1;
-
-// include('main.js');
-
-
 // Initial Deal function.
 function dealing() {
     // Checking chips betted amount.
@@ -28,8 +21,8 @@ function dealing() {
                 para1.id = "para" + i;
                 //para1.className = "cards";
                 div.className = "cards";
-                let numOnCard = main.numOfCard();
-                // let numOnCard = array.num[0];
+                // let numOnCard = main.numOfCard();
+                let numOnCard = main.array.num[3];
                 let shapeOnCard = main.shapeOfCard();
                 // Checking number on the card to display.
                 if (numOnCard == "J" || numOnCard == "Q" || numOnCard == "K" || numOnCard == "A") {
@@ -37,23 +30,25 @@ function dealing() {
                     div.appendChild(para1);
                 } else {
                     // Pushing number of shapes equal to the number on cards.
-                    for (j = 0; j < [numOnCard]; j++) {
-                        main.shapeArray.push(shapeOnCard);
-                    }
                     para1.textContent = numOnCard;
                     para1.className = "left";
-                    // div.textContent = para + shapeArray.join(" ") + div.appendChild(para);
-                    //div.appendChild(para).firstChild;
+                    div.appendChild(para1);
+                    for (j = 0; j < [numOnCard]; j++) {
+                        main.shapeArray.push(shapeOnCard);
+                        // let parashape = document.createElement('p');
+                        // parashape.className = "card"+numOnCard;
+                        // parashape.textContent = shapeOnCard;
+                        // div.appendChild(parashape);
+                    }
+
                     para2.textContent = main.shapeArray.join(" ");
+                    para2.className = "card" + numOnCard;
                     para3.textContent = numOnCard;
                     para3.className = "right";
-                    div.appendChild(para1);
+
                     div.appendChild(para2);
                     div.appendChild(para3);
-
                 }
-
-                // console.log(shapeArray);
 
                 main.tags.player.appendChild(div);
                 main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
@@ -98,6 +93,8 @@ function dealing() {
         main.tags.hit.disabled = false;
         main.tags.hold.disabled = false;
         main.tags.dscore.style.cssText = "display:none;";
+        let scoreStyle = document.getElementsByClassName('main-score');
+        scoreStyle[0].style.cssText = "justify-content: flex-end;";
         main.tags.label.textContent = "Chips Betted";
         main.tags.label.style.cssText = "color:blue;";
         main.values.chips -= main.tags.bet.value;
@@ -153,4 +150,4 @@ function hitme() {
     }
 }
 
-export {dealing, hitme};
+export { dealing, hitme };

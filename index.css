@@ -1,19 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+}
+
 body {
-    background: url("img/img_bg.jpg");
-    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333;
+    background-image: url("img/img_bg.jpg");
+    background-size: 100%;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.logo a {
+    color: #fff;
+    font-size: 30px;
+}
+
+.menu ul {
+    display: flex;
+}
+
+.menu ul li a {
+    margin-left: 25px;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* body {
+    
+    width: 99%;
+    height: 99%;
+    
+
+} */
+#mainDiv {
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    color: #fff;
+    flex-direction: column;
+}
+
+.header-line, .dealing-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 100%;
+}
+
+div#dealer, div#player {
+    background-color: beige;
+    height: 300px;
+    flex-basis: 30%;
+}
+
+.main-score {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-basis: 100%;
+}
+#dscore {
+    background-color: aliceblue;
+    display: none;
+}
+
+#pscore {
+    
+    background-color: aliceblue;
+}
+/* #dealer {
+    background-color: beige !important;
+    width: 25%;
+    height: 25%;
+    order: 1;
+    align-self: flex-start;
+
 
 }
-#dealer {
-    background-color: beige !important;
-    width: 200px;
-    height: 200px;
-}
+
 #player {
     background-color: darkgray !important;
-    width: 200px;
-    height: 200px;
-    float: right;
-}
+    width: 25%;
+    height: 25%;
+    align-self: flex-end;
+
+    
+} */
+
 button {
     width: 20%;
     height: 30px;
@@ -21,61 +120,90 @@ button {
     margin-right: auto;
     display: block;
     opacity: 0.7;
-    font-size: large;    
+    font-size: large;
 }
+
 p {
     display: inline-block;
     width: 100%;
     margin-top: 0%;
     margin-bottom: 0%;
 }
+
 deal:disabled {
     pointer-events: none;
 }
+
 hit:disabled {
     pointer-events: none;
 }
+
 hold:disabled {
     pointer-events: none;
 }
-#dscore {
-    background-color: aliceblue;
-    display: none;
-}
-#pscore {
-    position: absolute;
-    background-color: aliceblue;
-    /* float: right; */
-    display: inline-block;
-    right: 8px;
-}
+
+
+
 #chips {
     margin-top: 20px;
     background-color: aliceblue;
     float: right;
 }
+
 #para5 {
     display: none;
 }
+
 #label {
     background-color: aliceblue;
 }
+
 #chipsInput {
     position: absolute;
     margin-top: 40px;
     right: 8px;
 }
+
 .cards {
+    /* display: flex;
+    justify-content: space-between;
+    flex-direction: row; */
     width: 90px;
     height: 100px;
     text-align: center;
     font-size: large;
     background-color: white;
-    
+
 }
+
 .left {
+
+    float: left;
     text-align: left;
+    margin-top: 0%;
+
 }
+
 .right {
     text-align: right;
+    margin-bottom: 0%;
+    position: absolute;
+}
+
+.card2 .card3 {
+    display: flex;
+    justify-items: center;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.card4 {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    position: relative;
+    width: max-content;
+    margin: auto;
+
 }

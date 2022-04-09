@@ -9,6 +9,8 @@ function onHold() {
     let para5 = document.getElementById('para5');
     para5.style.cssText = "display:inline-block;";
     main.tags.dscore.style.cssText = "display:inline-block;"
+    let scoreStyle = document.getElementsByClassName('main-score');
+    scoreStyle[0].style.cssText = "justify-content: space-between;";
     main.tags.hit.disabled = true;
     // Checking dealer's value for the final result.
     if (main.values.dealerValue >= 17 && main.values.dealerValue < main.values.playerValue) {
