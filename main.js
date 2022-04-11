@@ -12,7 +12,7 @@ let array = {
 };
 
 // Array to store the shapes.
-let shapeArray = [];
+// let shapeArray = [];
 //object for all the tags.
 let tags = {
     deal: document.getElementById("deal"),
@@ -26,6 +26,7 @@ let tags = {
     chips: document.getElementById('chips'),
     bet: document.getElementById('bet'),
     label: document.getElementById('label'),
+    result: document.getElementById('fResult')
 };
 // All values included in the game.
 let values = {
@@ -46,16 +47,17 @@ tags.hit.disabled = true;
 tags.hold.disabled = true;
 tags.reset.disabled = true;
 tags.chips.textContent = "Total Chips : " + values.chips;
-tags.label.textContent = "Total Chips to Bet";
+tags.label.textContent = "Chips to Bet";
 tags.bet.value = 1;
 
 // Display final result.
 function finalResult(text) {
-    let result = document.createElement('p');
-    result.className = "result";
+    // let result = document.createElement('p');
+    let result = document.getElementById('fResult');
+    // result.className = "result";
     result.textContent = text;
     result.style.cssText = "background:white;";
-    document.body.appendChild(result);
+    // document.body.appendChild(result);
     tags.hit.disabled = true;
     tags.hold.disabled = true;
 }
@@ -67,5 +69,5 @@ tags.reset.addEventListener('click', reset.resetAll);
 
 export {
     array, tags, values, cardNum, cardShape, numOfCard,
-    shapeOfCard, finalResult, shapeArray,
+    shapeOfCard, finalResult,
 };

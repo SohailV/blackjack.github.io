@@ -3,6 +3,7 @@
 <head>
     <title>Black Jack</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
@@ -10,7 +11,7 @@
         <div class="container">
             <div class="header">
                 <div class="logo">
-                    <a href="">Welcome to the Casino</a>
+                    <a href="">Welcome to the Game of BlackJack</a>
                 </div>
                 <div class="menu">
                     <ul>
@@ -21,7 +22,38 @@
             </div>
         </div>
     </header>
+
     <section class="dealer-player">
+        <div class="container">
+            <div id="mainDiv">
+                <div class="dealing-cards">
+                    <div class="dealer">
+                        <label class="tag">Dealer</label>
+                        <div id="dealer"></div>
+                        <!-- <div class="deck">
+                        <img src="./img/decks.jpg" alt="">
+                            </div> -->
+                        <!-- <div id="player"></div> -->
+                        <label id="dscore">Dealer Total: 0</label>
+                    </div>
+                    <div class="deck">
+                        <img src="./img/decks.jpg" alt="">
+                        <p id="fResult"></p>
+                    </div>
+                    <div class="player">
+                        <label class="tag">Player</label>
+                        <div id="player"></div>
+                        <!-- <div class="deck">
+                        <img src="./img/decks.jpg" alt="">
+                            </div> -->
+                        <!-- <div id="player"></div> -->
+                        <label id="pscore">Player Total: 0</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- <section class="dealer-player">
         <div class="container">
             <div id="mainDiv">
                 <div class="header-line">
@@ -30,20 +62,22 @@
                 </div>
                 <div class="dealing-cards">
                     <div id="dealer"></div>
-                    <div class="deck"></div>
+                    <div class="deck">
+                        <img src="./img/decks.jpg" alt="">
+                    </div>
                     <div id="player"></div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="score">
+    </section> -->
+    <!-- <section class="score">
         <div class="container">
             <div class="main-score">
                 <label id="dscore">Dealer Total: 0</label>
                 <label id="pscore">Player Total: 0</label>
             </div>
         </div>
-    </section>
+    </section> -->
     <section class="buttons-chips-area">
         <div class="container">
             <div class="buttons-chips">

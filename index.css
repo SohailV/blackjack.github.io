@@ -25,6 +25,8 @@ body {
     color: #333;
     background-image: url("img/img_bg.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .header {
@@ -50,29 +52,72 @@ body {
     color: #fff;
 }
 
-#mainDiv {
+#mainDiv {   
+    margin-bottom: 30px;
+
+}
+.tag {
+    margin-bottom: 30px;
+    color: #fff;
+}
+/* #mainDiv {
 
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
     color: #fff;
     flex-direction: column;
-}
+} */
 
-.header-line, .dealing-cards {
+/* .header-line, .dealing-cards {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-basis: 100%;
-}
+} */
 
-div#dealer, div#player {
-    /* background-color: beige; */
-    height: 300px;
-    flex-basis: 30%;
+.dealing-cards {
     display: flex;
+    
+}
+.dealer {
+    flex-basis: 33.33%
+}
+.player {
+    flex-basis: 33.33%
 }
 
+#dealer, #player {
+    /* background-color: beige; */
+    min-height: 300px;
+    flex-basis: 33.33%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.deck {
+    flex-basis: 33.33%;
+    /* justify-self: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.deck img {
+    width: 30%;
+    border-radius: 10%;
+    border-right: 4px solid #ddd;
+    border-bottom: 4px solid #ddd;
+}
+#fResult {
+    flex-basis: 8%;
+    background-color: rgba(0, 0, 0, 0.01);
+    
+}
+ 
 .main-score {
     display: flex;
     justify-content: flex-end;
@@ -82,12 +127,16 @@ div#dealer, div#player {
 
 #dscore {
     background-color: aliceblue;
-    display: none;
+    visibility: hidden;
+    padding: 6px;
+    border-radius: 5%;
 }
 
 #pscore {
 
     background-color: aliceblue;
+    padding: 6px;
+    border-radius: 5%;
 }
 
 .buttons-chips {
@@ -96,8 +145,15 @@ div#dealer, div#player {
     align-items: center;
 }
 
+.flipCard {
+    transform: rotateY(180deg);
+}
 .chips {
     align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
 }
 
 .buttons {
@@ -153,6 +209,8 @@ hold:disabled {
 
 #label {
     background-color: aliceblue;
+    padding: 6px;
+    border-radius: 10%;
 }
 
 

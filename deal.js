@@ -4,17 +4,20 @@ import * as chips from './chips.js';
 
 let numOnCard;
 
-function card(idNo){
+function card(idNo) {
+    console.log(idNo);
     let div = document.createElement('div');
     let para1 = document.createElement('p');
     let para2 = document.createElement('p');
     let para3 = document.createElement('p');
-    para1.id = "para" + idNo;
-    
-    div.id = "Card" + idNo;
-    numOnCard = main.numOfCard();
+    if (idNo != undefined) {
+        para1.id = "para" + idNo;
 
-    // let numOnCard = main.array.num[3];
+        div.id = "Card" + idNo;
+    }
+
+    numOnCard = main.numOfCard();
+    // numOnCard = main.array.num[1];
     let shapeOnCard = main.shapeOfCard();
 
     // Checking shape on the card to display.
@@ -114,14 +117,14 @@ function dealing() {
                 }
             }
             // Emptying the array after the cards are dealt.
-            main.shapeArray.splice(0, main.shapeArray.length);
+            // main.shapeArray.splice(0, main.shapeArray.length);
         }
         main.tags.deal.disabled = true;
         main.tags.hit.disabled = false;
         main.tags.hold.disabled = false;
         main.tags.dscore.style.cssText = "display:none;";
-        let scoreStyle = document.getElementsByClassName('main-score');
-        scoreStyle[0].style.cssText = "justify-content: flex-end;";
+        // let scoreStyle = document.getElementById('main-score');
+        // scoreStyle[0].style.cssText = "justify-content: flex-end;";
         main.tags.label.textContent = "Chips Betted";
         main.tags.label.style.cssText = "color:blue;";
         main.values.chips -= main.tags.bet.value;
