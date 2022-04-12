@@ -54,7 +54,7 @@ tags.bet.value = 1;
 function finalResult(text) {
     let result = document.getElementById('fResult');
     result.textContent = text;
-    result.style.cssText = "background:white;";
+    // result.style.cssText = "background:white;";
     tags.hit.disabled = true;
     tags.hold.disabled = true;
 }
