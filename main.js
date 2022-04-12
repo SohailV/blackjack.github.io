@@ -52,12 +52,9 @@ tags.bet.value = 1;
 
 // Display final result.
 function finalResult(text) {
-    // let result = document.createElement('p');
     let result = document.getElementById('fResult');
-    // result.className = "result";
     result.textContent = text;
     result.style.cssText = "background:white;";
-    // document.body.appendChild(result);
     tags.hit.disabled = true;
     tags.hold.disabled = true;
 }

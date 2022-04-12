@@ -99,6 +99,14 @@ body {
     justify-content: space-evenly;
     margin-bottom: 10px;
 }
+#Card5 {
+    background-image: url("./img/decks.jpg");
+    background-size: cover;
+    background-position: center;
+}
+#Card5 > .scard {
+    display: none;
+}
 
 .deck {
     flex-basis: 33.33%;

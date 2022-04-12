@@ -7,11 +7,15 @@ function onHold() {
 
     main.tags.hold.disabled = true;
     main.tags.reset.disabled = false;
-    // let para5 = document.getElementById('para5');
-    // para5.style.cssText = "display:inline-block;";
+
+    let card5 = document.querySelector('#Card5');
+    let card5p = document.querySelectorAll('#Card5 > .scard');
+    console.log(card5p);
+    card5.style.cssText = "background-image: none";
+    card5p[0].style.cssText = "display: inline-block";
+    card5p[1].style.cssText = "display: inline-block";
+    card5p[2].style.cssText = "display: inline-block";
     main.tags.dscore.style.cssText = "visibility: visible;"
-    // let scoreStyle = document.getElementsByClassName('main-score');
-    // scoreStyle[0].style.cssText = "justify-content: space-between;";
     main.tags.hit.disabled = true;
     // Checking dealer's value for the final result.
     if (main.values.dealerValue >= 17 && main.values.dealerValue < main.values.playerValue) {
@@ -49,11 +53,6 @@ function onHold() {
             if (main.values.roundComplete) {
                 break;
             }
-            // let para = document.createElement('p');
-            // para.className = "cards";
-            // let numOnCard = main.numOfCard();
-            // // let numOnCard = main.array.num[0];
-            // para.textContent = numOnCard + " of " + main.shapeOfCard();
             let cards = deal.card();
             main.tags.dealer.appendChild(cards);
             main.values.dealerValue += main.array.numValue[main.array.num.indexOf(deal.numOnCard)];

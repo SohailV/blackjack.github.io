@@ -27,11 +27,12 @@ function card(idNo) {
         div.className = "cards black";
     }
     para1.textContent = numOnCard;
-    para1.className = "left";
+    para1.className = "scard left";
     para2.textContent = shapeOnCard;
+    para2.className = "scard";
     // para2.className = "card" + numOnCard;
     para3.textContent = numOnCard;
-    para3.className = "right";
+    para3.className = "scard right";
     div.appendChild(para1);
     div.appendChild(para2);
     div.appendChild(para3);
@@ -51,32 +52,6 @@ function dealing() {
             let j = i % 2;
             if (j === 0) {
                 // debugger;
-                // let div = document.createElement('div');
-                // let para1 = document.createElement('p');
-                // let para2 = document.createElement('p');
-                // let para3 = document.createElement('p');
-                // para1.id = "para" + i;
-                // //para1.className = "cards";
-                // div.id = "pCard" + i;
-                // let numOnCard = main.numOfCard();
-                // // let numOnCard = main.array.num[3];
-                // let shapeOnCard = main.shapeOfCard();
-                // // Checking shape on the card to display.
-
-                // if (shapeOnCard == "\u2665" || shapeOnCard == "\u2666") {
-                //     div.className = "cards red";
-                // } else {
-                //     div.className = "cards black";
-                // }
-                // para1.textContent = numOnCard;
-                // para1.className = "left";
-                // para2.textContent = shapeOnCard;
-                // // para2.className = "card" + numOnCard;
-                // para3.textContent = numOnCard;
-                // para3.className = "right";
-                // div.appendChild(para1);
-                // div.appendChild(para2);
-                // div.appendChild(para3);
                 let cards = card(i);
                 // console.log(cards);
                 main.tags.player.appendChild(cards);
@@ -97,12 +72,6 @@ function dealing() {
             }
             // Alternative cards to the dealer.
             else {
-                // let para = document.createElement('p');
-                // para.id = "para" + i;
-                // para.className = "cards";
-                // let numOnCard = main.numOfCard();
-                // // let numOnCard = array.num[0];
-                // para.textContent = numOnCard + " of " + main.shapeOfCard();
                 let cards = card(i);
                 main.tags.dealer.appendChild(cards);
                 main.values.dealerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
@@ -116,15 +85,12 @@ function dealing() {
                     }
                 }
             }
-            // Emptying the array after the cards are dealt.
-            // main.shapeArray.splice(0, main.shapeArray.length);
+            
         }
         main.tags.deal.disabled = true;
         main.tags.hit.disabled = false;
         main.tags.hold.disabled = false;
         main.tags.dscore.style.cssText = "display:none;";
-        // let scoreStyle = document.getElementById('main-score');
-        // scoreStyle[0].style.cssText = "justify-content: flex-end;";
         main.tags.label.textContent = "Chips_Betted";
         main.tags.label.style.cssText = "color:blue;";
         main.values.chips -= main.tags.bet.value;
@@ -139,11 +105,6 @@ function dealing() {
 // Hit function, if the player proceeds for the next card.
 function hitme() {
     // debugger;
-    // let para = document.createElement('p');
-    // para.className = "cards";
-    // let numOnCard = main.numOfCard();
-    // // let numOnCard = array.num[1];
-    // para.textContent = numOnCard + " of " + main.shapeOfCard();
     let cards = card();
     main.tags.player.appendChild(cards);
     main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
