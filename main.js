@@ -52,7 +52,7 @@ tags.bet.value = 0;
 
 // Display final result.
 function finalResult(text) {
-    debugger;
+    // debugger;
     let result = document.getElementById('fResult');
     result.textContent = text;
     // result.style.cssText = "background:white;";
