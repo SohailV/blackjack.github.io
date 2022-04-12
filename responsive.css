@@ -13,11 +13,18 @@
     .container {
         width: 750px;
     }
+    body {
+        
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
 
     #chipsInput {
         display: flex;
         flex-direction: column;
-        width: 65%;
+        width: 75%;
         margin-top: 10px;
     }
 
@@ -49,31 +56,73 @@
 
 /* Wide Mobile layout: 480px. */
 
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .container {
-        width: 350px;
+        width: 90%;
     }
-
+    body {
+        
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
     .header {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .menu ul {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         margin-top: 15px;
+    }
+    #mainDiv {
+        margin-bottom: 10px;
     }
     .dealing-cards {
         flex-direction: column;
         
     }
+
     #dealer, #player {
         min-height: 100px;
+        justify-content: flex-start;
+    }
+    #dealer .cards p:nth-child(2) {
+        font-size: 40px;
+        height: 40%;
+        padding: 8px;
+    }
+    #player .cards p:nth-child(2) {
+        font-size: 40px;
+        height: 40%;
+        padding: 8px;
+    }
+    .cards {
+        width: 75px;
+        height: 95px;
     }
     .deck img {
         width: 15%;
     }
     .chips {
         margin-bottom: 10px;
+        align-self: flex-start;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 100%;
+        justify-content: space-between;
     }
+    #chipsInput {
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        
+        
+    }
+    #label {
+        padding: 2px;
+        margin-bottom: 10px; 
+    }
+    
 }

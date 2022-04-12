@@ -10,7 +10,7 @@ function resetAll() {
     main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
     main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
     main.tags.bet.value = 1;
-    main.tags.label.textContent = "Chips to Bet";
+    main.tags.label.textContent = "Chips_to_Bet";
     main.tags.bet.disabled = false;
     main.tags.bet.style.cssText = "color: black;";
     // main.shapeArray.splice(0, main.shapeArray.length);

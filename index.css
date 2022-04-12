@@ -51,6 +51,9 @@ body {
     font-size: 18px;
     color: #fff;
 }
+.menu ul li a:hover {
+    color: tomato;
+}
 
 #mainDiv {   
     margin-bottom: 30px;

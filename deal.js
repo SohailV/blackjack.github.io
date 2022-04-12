@@ -125,7 +125,7 @@ function dealing() {
         main.tags.dscore.style.cssText = "display:none;";
         // let scoreStyle = document.getElementById('main-score');
         // scoreStyle[0].style.cssText = "justify-content: flex-end;";
-        main.tags.label.textContent = "Chips Betted";
+        main.tags.label.textContent = "Chips_Betted";
         main.tags.label.style.cssText = "color:blue;";
         main.values.chips -= main.tags.bet.value;
         main.tags.chips.textContent = "Total Chips : " + main.values.chips;
