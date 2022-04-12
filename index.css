@@ -104,15 +104,32 @@ body {
     /* justify-self: center; */
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .deck img {
+    /* position: relative; */
     width: 30%;
     border-radius: 10%;
     border-right: 4px solid #ddd;
     border-bottom: 4px solid #ddd;
+    
+}
+@keyframes shuffle {
+    from {transform: translate(0px); z-index: -1;}
+    to {transform: translate(130px);}
+}
+
+.deck img:nth-child(2) {
+    position: absolute;
+    animation-name: willshuffle;
+    animation-duration: 0.14s;
+    animation-timing-function: linear;
+    animation-iteration-count: 8;
+    animation-direction: alternate;
+   
 }
 
 #fResult {
@@ -120,13 +137,36 @@ body {
     text-align: center;
     flex-basis: 8%;
     background-color: rgba(0, 0, 0, 0.01);
-    animation-name: example;
+    animation-name: resultText;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 
 }
+
+@keyframes resultText {
+    0% {
+        color: red;
+    }
+
+    25% {
+        color: #ffa903;
+    }
+
+    50% {
+        color: #ebf61c;
+    }
+
+    75% {
+        color: #02e6b0;
+    }
+
+    100% {
+        color: red;
+    }
+}
+
 
 .main-score {
     display: flex;
@@ -163,7 +203,6 @@ body {
     align-self: flex-end;
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-end; */
     align-items: flex-end;
 }
 
@@ -262,24 +301,3 @@ hold:disabled {
     text-shadow: #7989bc 2px 3px 5px;
 }
 
-@keyframes example {
-    0% {
-        color: red;
-    }
-
-    25% {
-        color: #ffa903;
-    }
-
-    50% {
-        color: #ebf61c;
-    }
-
-    75% {
-        color: #02e6b0;
-    }
-
-    100% {
-        color: red;
-    }
-}

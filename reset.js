@@ -15,6 +15,8 @@ function resetAll() {
     main.tags.bet.style.cssText = "color: black;";
     // main.shapeArray.splice(0, main.shapeArray.length);
     main.values.roundComplete = false;
+    let shuffle = document.querySelector('.deck img:nth-child(2)');
+    shuffle.style.cssText = "animation-name: willshuffle;";
 
     while (main.tags.dealer.firstChild) {
         main.tags.dealer.removeChild(main.tags.dealer.firstChild);
@@ -31,4 +33,4 @@ function resetAll() {
     }
 }
 
-export{resetAll};
+export { resetAll };

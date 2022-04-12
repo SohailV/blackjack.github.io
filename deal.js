@@ -48,45 +48,50 @@ function dealing() {
     } else {
         // debugger;
         // Dealing cards alternatively, first to player then to dealer.
-        for (let i = 2; i < 6; i++) {
-            let j = i % 2;
-            if (j === 0) {
-                // debugger;
-                let cards = card(i);
-                // console.log(cards);
-                main.tags.player.appendChild(cards);
-                main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
-                main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-                // Checking player's value
-                if (main.values.playerValue === 21) {
+        let shuffle = document.querySelector('.deck img:nth-child(2)');
+        shuffle.style.cssText = "animation-name: shuffle;";
+        setTimeout(function () {
+            for (let i = 2; i < 6; i++) {
+                let j = i % 2;
+                if (j === 0) {
                     // debugger;
-                    let text = "Lets check out the dealer";
-                    main.finalResult(text);
-                } else if (numOnCard === "A") {
-                    main.values.pIsAce = true;
-                    if (main.values.playerValue > 21) {
-                        main.values.playerValue -= 10;
-                        main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
+                    let cards = card(i);
+                    // console.log(cards);
+                    main.tags.player.appendChild(cards);
+                    main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
+                    main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
+                    // Checking player's value
+                    if (main.values.playerValue === 21) {
+                        // debugger;
+                        let text = "Lets check out the dealer";
+                        main.finalResult(text);
+                    } else if (numOnCard === "A") {
+                        main.values.pIsAce = true;
+                        if (main.values.playerValue > 21) {
+                            main.values.playerValue -= 10;
+                            main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
+                        }
                     }
                 }
-            }
-            // Alternative cards to the dealer.
-            else {
-                let cards = card(i);
-                main.tags.dealer.appendChild(cards);
-                main.values.dealerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
-                main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
-                // Ace value check for the dealer.
-                if (numOnCard === "A") {
-                    main.values.dIsAce = true;
-                    if (main.values.dealerValue > 21) {
-                        main.values.dealerValue -= 10;
-                        main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                // Alternative cards to the dealer.
+                else {
+                    let cards = card(i);
+                    main.tags.dealer.appendChild(cards);
+                    main.values.dealerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
+                    main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                    // Ace value check for the dealer.
+                    if (numOnCard === "A") {
+                        main.values.dIsAce = true;
+                        if (main.values.dealerValue > 21) {
+                            main.values.dealerValue -= 10;
+                            main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                        }
                     }
                 }
+
             }
-            
-        }
+        }, 1200);
+
         main.tags.deal.disabled = true;
         main.tags.hit.disabled = false;
         main.tags.hold.disabled = false;
