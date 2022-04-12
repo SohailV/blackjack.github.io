@@ -17,7 +17,7 @@ function card(idNo) {
     }
 
     numOnCard = main.numOfCard();
-    // numOnCard = main.array.num[1];
+    // numOnCard = main.array.num[0];
     let shapeOnCard = main.shapeOfCard();
 
     // Checking shape on the card to display.
@@ -52,26 +52,17 @@ function dealing() {
         shuffle.style.cssText = "animation-name: shuffle;";
         setTimeout(function () {
             for (let i = 2; i < 6; i++) {
+                let pCard;
                 let j = i % 2;
                 if (j === 0) {
                     // debugger;
                     let cards = card(i);
-                    // console.log(cards);
+                     console.log("Cards", cards);
                     main.tags.player.appendChild(cards);
                     main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
                     main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-                    // Checking player's value
-                    if (main.values.playerValue === 21) {
-                        // debugger;
-                        let text = "Lets check out the dealer";
-                        main.finalResult(text);
-                    } else if (numOnCard === "A") {
-                        main.values.pIsAce = true;
-                        if (main.values.playerValue > 21) {
-                            main.values.playerValue -= 10;
-                            main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-                        }
-                    }
+                    pCard= numOnCard;
+                    
                 }
                 // Alternative cards to the dealer.
                 else {
@@ -86,6 +77,18 @@ function dealing() {
                             main.values.dealerValue -= 10;
                             main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
                         }
+                    }
+                }
+                // Checking player's value
+                if (main.values.playerValue === 21) {
+                    // debugger;
+                    let text = "Lets check out the dealer";
+                    main.finalResult(text);
+                } else if (pCard === "A") {
+                    main.values.pIsAce = true;
+                    if (main.values.playerValue > 21) {
+                        main.values.playerValue -= 10;
+                        main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
                     }
                 }
 
