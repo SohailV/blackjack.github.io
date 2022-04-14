@@ -129,7 +129,7 @@ body {
 .deck img:nth-child(2) {
     position: absolute;
     animation-name: willshuffle;
-    animation-duration: 0.14 s;
+    animation-duration: 0.14s;
     animation-timing-function: linear;
     animation-iteration-count: 8;
     animation-direction: alternate;
