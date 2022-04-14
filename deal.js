@@ -110,7 +110,7 @@ function dealing() {
         main.tags.deal.disabled = true;
         main.tags.hit.disabled = false;
         main.tags.hold.disabled = false;
-        main.tags.dscore.style.cssText = "display:none;";
+        // main.tags.dscore.style.cssText = "display:none;";
         main.tags.label.textContent = "Chips_Betted";
         main.tags.label.style.cssText = "color:blue;";
         main.values.chips -= main.tags.bet.value;
