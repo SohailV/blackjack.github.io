@@ -37,7 +37,7 @@
 }
 
 
-/* Wide Mobile layout: 480px. */
+/* Wide Mobile layout */
 
 @media only screen and (max-width: 767px) {
     .container {
@@ -96,11 +96,13 @@
         align-items: flex-start;
         width: 100%;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
     #chipsInput {
         display: flex;
         flex-direction: column;
-        width: 25%;
+        flex-basis: 30%;
+        flex-wrap: wrap;
         
         
     }
@@ -112,6 +114,17 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        flex-direction: column;
     }
+    .play-buttons {
+        display: flex;
+        justify-content: space-between;
+      }
+      .deal-single {
+        /*! width: 32%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     
 }

@@ -9,12 +9,13 @@ function resetAll() {
     main.tags.deal.disabled = false;
     main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
     main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
-    main.tags.bet.value = 0;
+    main.tags.bet.value = 1;
     main.tags.label.textContent = "Chips_to_Bet";
     main.tags.bet.disabled = false;
     main.tags.bet.style.cssText = "color: black;";
-    // main.shapeArray.splice(0, main.shapeArray.length);
     main.values.roundComplete = false;
+    main.tags.result.textContent = "Let's Play";
+    main.tags.result.style.cssText = "background-color: rgba(0, 0, 0, 0.01);"
     let shuffle = document.querySelector('.deck img:nth-child(2)');
     shuffle.style.cssText = "animation-name: willshuffle;";
 
@@ -24,13 +25,9 @@ function resetAll() {
     while (main.tags.player.firstChild) {
         main.tags.player.removeChild(main.tags.player.firstChild);
     }
-    while (main.tags.result.firstChild) {
-        // main.tags.result.removeChild(main.tags.result.firstChild);
-        // main.tags.result.classList.remove('result');
-        main.tags.result.textContent = "";
-        main.tags.result.style.cssText = "background-color: rgba(0, 0, 0, 0.01);"
+    
 
-    }
+       
 }
 
 export { resetAll };

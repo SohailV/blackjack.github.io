@@ -18,6 +18,13 @@ function card(idNo) {
 
     numOnCard = main.numOfCard();
     // numOnCard = main.array.num[0];
+    // if(idNo == 2) {
+    //     numOnCard = main.array.num[10];
+    // }else if(idNo == 4) {
+    //     numOnCard = main.array.num[0];
+    // }else {
+    //     numOnCard = main.numOfCard();
+    // }
     let shapeOnCard = main.shapeOfCard();
 
     // Checking shape on the card to display.
@@ -78,13 +85,18 @@ function dealing() {
                             main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
                         }
                     }
+                    if (main.values.playerValue === 21) {
+                        onHold.onHold();
+                    }
                 }
                 // Checking player's value
-                if (main.values.playerValue === 21) {
-                    // debugger;
-                    let text = "Lets check out the dealer";
-                    main.finalResult(text);
-                } else if (pCard === "A") {
+                // if (main.values.playerValue === 21) {
+                //     debugger;
+                //     let text = "Lets check out the dealer";
+                //     main.finalResult(text);
+                    
+                // } else 
+                if (pCard === "A") {
                     main.values.pIsAce = true;
                     if (main.values.playerValue > 21) {
                         main.values.playerValue -= 10;
@@ -105,9 +117,7 @@ function dealing() {
         main.tags.chips.textContent = "Total Chips : " + main.values.chips;
         main.tags.bet.disabled = true;
         main.tags.bet.style.cssText = "color: red;";
-        if (main.values.playerValue === 21) {
-            onHold.onHold();
-        }
+        
     }
 }
 // Hit function, if the player proceeds for the next card.
