@@ -48,7 +48,7 @@ tags.hold.disabled = true;
 tags.reset.disabled = true;
 tags.chips.textContent = "Total Chips : " + values.chips;
 tags.label.textContent = "Chips_to_Bet";
-tags.bet.value = 1;
+tags.bet.value = 0;
 
 // Display final result.
 function finalResult(text) {
