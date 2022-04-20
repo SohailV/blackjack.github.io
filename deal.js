@@ -16,8 +16,8 @@ function card(idNo) {
         div.id = "Card" + idNo;
     }
 
-    numOnCard = main.numOfCard();
-    // numOnCard = main.array.num[0];
+    // numOnCard = main.numOfCard();
+    numOnCard = main.array.num[1];
     // if(idNo == 2) {
     //     numOnCard = main.array.num[10];
     // }else if(idNo == 4) {

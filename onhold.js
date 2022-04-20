@@ -81,6 +81,8 @@ function onHold() {
                 onHold();
             } else if (deal.numOnCard === "A") {
                 main.values.dIsAce = true;
+            } else if (main.values.dealerValue > main.values.playerValue) {
+                onHold();
             }
         }
     }
