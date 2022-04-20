@@ -49,9 +49,12 @@ function card(idNo) {
 // Initial Deal function.
 function dealing() {
     // Checking chips betted amount.
-    if (isNaN(main.tags.bet.value) || main.tags.bet.value == 0 || main.tags.bet.value > main.values.chips) {
+    if (isNaN(main.tags.bet.value) || main.tags.bet.value == 0 || main.tags.bet.value > main.values.chips ||
+    main.tags.bet.value < 0) {
         main.tags.label.textContent = "Enter a valid Amount";
         main.tags.label.style.cssText = "color:red;";
+        let text = "Enter Bet Amount";
+                main.finalResult(text);
     } else {
         // debugger;
         // Dealing cards alternatively, first to player then to dealer.
