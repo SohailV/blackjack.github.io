@@ -58,6 +58,8 @@ function dealing() {
     } else {
         // debugger;
         // Dealing cards alternatively, first to player then to dealer.
+        let text = "";
+                main.finalResult(text);
         let shuffle = document.querySelector('.deck img:nth-child(2)');
         shuffle.style.cssText = "animation-name: shuffle;";
         setTimeout(function () {
