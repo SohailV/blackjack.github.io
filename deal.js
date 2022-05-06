@@ -17,7 +17,7 @@ function card(idNo) {
     }
 
     numOnCard = main.numOfCard();
-    // numOnCard = main.array.num[1];
+    // numOnCard = main.array.num[2];
     // if(idNo == 2) {
     //     numOnCard = main.array.num[10];
     // }else if(idNo == 4) {
@@ -48,36 +48,60 @@ function card(idNo) {
 
 // Initial Deal function.
 function dealing() {
+    const music = new Audio('./audio/cards.mp3');
+    // music.play();
+    // music.loop = true;
+    // music.playbackRate = 2;
     // Checking chips betted amount.
     if (isNaN(main.tags.bet.value) || main.tags.bet.value == 0 || main.tags.bet.value > main.values.chips ||
-    main.tags.bet.value < 0) {
+        main.tags.bet.value < 0) {
         main.tags.label.textContent = "Enter a valid Amount";
         main.tags.label.style.cssText = "color:red;";
         let text = "Enter Bet Amount";
-                main.finalResult(text);
+        main.finalResult(text);
     } else {
         // debugger;
         // Dealing cards alternatively, first to player then to dealer.
         let text = "";
-                main.finalResult(text);
+        main.finalResult(text);
+        music.play();
+        music.playbackRate = 1.3;
         let shuffle = document.querySelector('.deck img:nth-child(2)');
         shuffle.style.cssText = "animation-name: shuffle;";
+
         setTimeout(function () {
+            shuffle.style.cssText =
+                "animation-name: dealCard; animation-duration: 1.2s; animation-iteration-count: 2; animation-direction: normal;";
+        }, 850);
+        setTimeout(function () {
+
             for (let i = 2; i < 6; i++) {
                 let pCard;
                 let j = i % 2;
                 if (j === 0) {
                     // debugger;
+
                     let cards = card(i);
-                     console.log("Cards", cards);
+                    console.log("Cards", cards);
                     main.tags.player.appendChild(cards);
                     main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
                     main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-                    pCard= numOnCard;
-                    
+                    pCard = numOnCard;
+                    if (pCard === "A") {
+                        main.values.pIsAce = true;
+                        if (main.values.playerValue > 21) {
+                            main.values.playerValue -= 10;
+                            main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
+                        }
+                    }
+
+
+
                 }
                 // Alternative cards to the dealer.
                 else {
+
+
                     let cards = card(i);
                     main.tags.dealer.appendChild(cards);
                     main.values.dealerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
@@ -93,24 +117,19 @@ function dealing() {
                     if (main.values.playerValue === 21) {
                         onHold.onHold();
                     }
+
                 }
                 // Checking player's value
                 // if (main.values.playerValue === 21) {
                 //     debugger;
                 //     let text = "Lets check out the dealer";
                 //     main.finalResult(text);
-                    
+
                 // } else 
-                if (pCard === "A") {
-                    main.values.pIsAce = true;
-                    if (main.values.playerValue > 21) {
-                        main.values.playerValue -= 10;
-                        main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-                    }
-                }
+
 
             }
-        }, 1200);
+        }, 3000);
 
         main.tags.deal.disabled = true;
         main.tags.hit.disabled = false;
@@ -122,47 +141,59 @@ function dealing() {
         main.tags.chips.textContent = "Total Chips : " + main.values.chips;
         main.tags.bet.disabled = true;
         main.tags.bet.style.cssText = "color: red;";
-        
+
     }
 }
 // Hit function, if the player proceeds for the next card.
 function hitme() {
     // debugger;
-    let cards = card();
-    main.tags.player.appendChild(cards);
-    main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
-    main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-    // value check for the player.
-    if (main.values.playerValue > 21) {
-        // Ace check for the player.
-        if (main.values.pIsAce) {
-            main.values.playerValue -= 10;
-            main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-            main.values.pIsAce = false;
-        } else if (numOnCard === "A") {
-            main.values.playerValue -= 10;
-            main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
-            if (main.values.playerValue === 21) {
-                let text = "Lets check out the dealer";
-                main.finalResult(text);
-                onHold.onHold();
+
+    let shuffle = document.querySelector('.deck img:nth-child(2)');
+    const music = new Audio('./audio/singlecard.mp3');
+    music.play();
+    shuffle.style.cssText =
+        "animation-name: playerHit; animation-duration: 0.5s; animation-iteration-count: 1; animation-direction: normal;";
+    setTimeout(function () {
+        shuffle.style.cssText =
+            "animation-name: willshuffle;";
+        let cards = card();
+        main.tags.player.appendChild(cards);
+        main.values.playerValue += main.array.numValue[main.array.num.indexOf(numOnCard)];
+        main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
+        // value check for the player.
+        if (main.values.playerValue > 21) {
+            // Ace check for the player.
+            if (main.values.pIsAce) {
+                main.values.playerValue -= 10;
+                main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
+                main.values.pIsAce = false;
+            } else if (numOnCard === "A") {
+                main.values.playerValue -= 10;
+                main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
+                if (main.values.playerValue === 21) {
+                    let text = "Lets check out the dealer";
+                    main.finalResult(text);
+                    onHold.onHold();
+                }
             }
-        }
-        else {
-            let text = "You Lost";
+            else {
+                let text = "You Lost";
+                main.finalResult(text);
+                main.tags.reset.disabled = false;
+                main.values.roundStatus = "Lost";
+                return chips.chipsCalc(main.values.roundStatus);
+            }
+            // Value check for the dealer Calling onHold function.    
+        } else if (main.values.playerValue === 21) {
+            let text = "Lets check out the dealer";
             main.finalResult(text);
-            main.tags.reset.disabled = false;
-            main.values.roundStatus = "Lost";
-            return chips.chipsCalc(main.values.roundStatus);
+            onHold.onHold();
+        } else if (numOnCard === "A") {
+            main.values.pIsAce = true;
         }
-        // Value check for the dealer Calling onHold function.    
-    } else if (main.values.playerValue === 21) {
-        let text = "Lets check out the dealer";
-        main.finalResult(text);
-        onHold.onHold();
-    } else if (numOnCard === "A") {
-        main.values.pIsAce = true;
-    }
+
+    }, 650);
+
 }
 
 export { dealing, hitme, card, numOnCard };

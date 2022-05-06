@@ -2,6 +2,8 @@ import * as main from './main.js';
 import * as chips from './chips.js';
 import * as deal from './deal.js';
 
+
+
 function onHold() {
     // debugger;
 
@@ -48,44 +50,69 @@ function onHold() {
     }
     else {
         // Adding third or more cards to the dealer's hand
-        //  debugger;
-        for (main.values.dealerValue; main.values.dealerValue < 17;) {
-            if (main.values.roundComplete) {
-                break;
-            }
-            let cards = deal.card();
-            main.tags.dealer.appendChild(cards);
-            main.values.dealerValue += main.array.numValue[main.array.num.indexOf(deal.numOnCard)];
-            main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
-            if (main.values.dealerValue > 21) {
-                if (main.values.dIsAce) {
-                    main.values.dealerValue -= 10;
-                    main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
-                    main.values.dIsAce = false;
-                    onHold();
-                } else if (deal.numOnCard === "A") {
-                    main.values.dealerValue -= 10;
-                    main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
-                    onHold();
-                }
-                else {
+        // debugger;
+        let shuffle = document.querySelector('.deck img:nth-child(2)');
 
-                    let text = "You Win";
-                    main.finalResult(text);
-                    main.values.roundStatus = "Won";
-                    chips.chipsCalc(main.values.roundStatus);
+        function dealerAnimation(aniName) {
+            const music = new Audio('./audio/singlecard.mp3');
+            music.play();
+            shuffle.style.cssText =
+                "animation-name:" + aniName + "; animation-duration: 0.5s; animation-iteration-count: 1; animation-direction: normal;";
+            setTimeout(function () {
+
+                for (main.values.dealerValue; main.values.dealerValue < 17;) {
+                    shuffle.style.cssText =
+                        "animation-name: willshuffle;";
+                    if (main.values.roundComplete) {
+                        break;
+                    }
+
+                    let cards = deal.card();
+                    main.tags.dealer.appendChild(cards);
+                    main.values.dealerValue += main.array.numValue[main.array.num.indexOf(deal.numOnCard)];
+                    main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                    if (main.values.dealerValue > 21) {
+                        if (main.values.dIsAce) {
+                            main.values.dealerValue -= 10;
+                            main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                            main.values.dIsAce = false;
+                            onHold();
+                        } else if (deal.numOnCard === "A") {
+                            main.values.dealerValue -= 10;
+                            main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                            onHold();
+                        }
+                        else {
+
+                            let text = "You Win";
+                            main.finalResult(text);
+                            main.values.roundStatus = "Won";
+                            chips.chipsCalc(main.values.roundStatus);
+
+                        }
+                    } else if (main.values.dealerValue >= 17 && main.values.dealerValue < 21) {
+                        onHold();
+                    } else if (main.values.dealerValue === 21) {
+                        onHold();
+                    } else if (deal.numOnCard === "A") {
+                        main.values.dIsAce = true;
+                    } else if (main.values.dealerValue > main.values.playerValue) {
+                        onHold();
+                    } else {
+
+                        dealerAnimation("dealerHit");
+                        break;
+                    }
+
+
                 }
-            } else if (main.values.dealerValue >= 17 && main.values.dealerValue < 21) {
-                onHold();
-            } else if (main.values.dealerValue === 21) {
-                onHold();
-            } else if (deal.numOnCard === "A") {
-                main.values.dIsAce = true;
-            } else if (main.values.dealerValue > main.values.playerValue) {
-                onHold();
-            }
+            }, 1000);
         }
+
+
+        dealerAnimation();
+
     }
 }
 
-export {onHold};
+export { onHold };

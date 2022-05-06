@@ -16,7 +16,7 @@ function resetAll() {
     main.tags.bet.style.cssText = "color: black;";
     main.values.roundComplete = false;
     main.tags.result.textContent = "Let's Play";
-    main.tags.result.style.cssText = "background-color: rgba(0, 0, 0, 0.01);"
+    main.tags.result.style.cssText = "background-color: transparent;"
     let shuffle = document.querySelector('.deck img:nth-child(2)');
     shuffle.style.cssText = "animation-name: willshuffle;";
 
