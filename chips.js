@@ -2,7 +2,7 @@ import * as main from './main.js';
 
 function chipsCalc(roundStatus) {
     // chips calculation.
-     debugger;
+    //  debugger;
     if (roundStatus == "Won") {
         main.values.chips += (main.tags.bet.value * 2);
         main.tags.bet.value = 0;

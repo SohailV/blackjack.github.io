@@ -71,7 +71,7 @@ tags.deal.addEventListener('click', deal.dealing);
 tags.hit.addEventListener('click', deal.hitme);
 tags.hold.addEventListener('click', onHold.onHold);
 tags.reset.addEventListener('click', reset.resetAll);
-tags.bet.addEventListener('click', slideValue);
+tags.bet.addEventListener('input', slideValue);
 
 export {
     array, tags, values, cardNum, cardShape, numOfCard,
