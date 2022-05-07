@@ -27,6 +27,7 @@ let tags = {
     bet: document.getElementById('bet'),
     label: document.getElementById('label'),
     result: document.getElementById('fResult')
+    
 };
 // All values included in the game.
 let values = {
@@ -49,7 +50,13 @@ tags.reset.disabled = true;
 tags.chips.textContent = "Total Chips : " + values.chips;
 tags.label.textContent = "Chips_to_Bet";
 tags.bet.value = 0;
+tags.bet.max = values.chips;
 
+
+// slider
+function slideValue() {
+    label.textContent = "Bet Value : " + bet.value;
+}
 // Display final result.
 function finalResult(text) {
     // debugger;
@@ -64,6 +71,7 @@ tags.deal.addEventListener('click', deal.dealing);
 tags.hit.addEventListener('click', deal.hitme);
 tags.hold.addEventListener('click', onHold.onHold);
 tags.reset.addEventListener('click', reset.resetAll);
+tags.bet.addEventListener('click', slideValue);
 
 export {
     array, tags, values, cardNum, cardShape, numOfCard,

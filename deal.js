@@ -135,10 +135,11 @@ function dealing() {
         main.tags.hit.disabled = false;
         main.tags.hold.disabled = false;
         // main.tags.dscore.style.cssText = "display:none;";
-        main.tags.label.textContent = "Chips_Betted";
+        // main.tags.label.textContent = "Chips_Betted";
         main.tags.label.style.cssText = "color:blue;";
         main.values.chips -= main.tags.bet.value;
         main.tags.chips.textContent = "Total Chips : " + main.values.chips;
+        // main.tags.bet.max = main.values.chips;
         main.tags.bet.disabled = true;
         main.tags.bet.style.cssText = "color: red;";
 
