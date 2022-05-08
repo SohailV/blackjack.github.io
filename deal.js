@@ -3,6 +3,7 @@ import * as onHold from './onhold.js';
 import * as chips from './chips.js';
 
 let numOnCard;
+const losemusic = new Audio('./audio/youlose.mp3');
 
 function card(idNo) {
     console.log(idNo);
@@ -154,23 +155,23 @@ function numCountMinus() {
         main.values.chips--;
         betValue--;
         main.tags.chips.textContent = main.values.chips;
-        if(betValue == 0) {
+        if (betValue == 0) {
             clearInterval(numcounter);
         }
     }, 10);
 }
-    
+
 
 // Hit function, if the player proceeds for the next card.
 function hitme() {
     // debugger;
-
     let shuffle = document.querySelector('.deck img:nth-child(2)');
     const music = new Audio('./audio/singlecard.mp3');
     music.play();
     shuffle.style.cssText =
         "animation-name: playerHit; animation-duration: 0.5s; animation-iteration-count: 1; animation-direction: normal;";
-    setTimeout(function () {
+    function singleCardPlayer() {
+
         shuffle.style.cssText =
             "animation-name: willshuffle;";
         let cards = card();
@@ -188,29 +189,32 @@ function hitme() {
                 main.values.playerValue -= 10;
                 main.tags.pscore.textContent = "Player Total: " + main.values.playerValue;
                 if (main.values.playerValue === 21) {
-                    let text = "Lets check out the dealer";
+                    let text = "Lets check the dealer";
                     main.finalResult(text);
                     onHold.onHold();
                 }
-            }
-            else {
+            } else {
                 let text = "You Lost";
                 main.finalResult(text);
                 main.tags.reset.disabled = false;
                 main.values.roundStatus = "Lost";
+                onHold.playTune(losemusic);
                 return chips.chipsCalc(main.values.roundStatus);
+
             }
             // Value check for the dealer Calling onHold function.    
         } else if (main.values.playerValue === 21) {
-            let text = "Lets check out the dealer";
+            let text = "Lets check the dealer";
             main.finalResult(text);
             onHold.onHold();
+            
         } else if (numOnCard === "A") {
             main.values.pIsAce = true;
+            
         }
 
-    }, 650);
-
+    }
+    setTimeout(singleCardPlayer(), 650);
 }
 
 export { dealing, hitme, card, numOnCard };

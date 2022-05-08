@@ -2,7 +2,14 @@ import * as main from './main.js';
 import * as chips from './chips.js';
 import * as deal from './deal.js';
 
+const losemusic = new Audio('./audio/youlose.mp3');
+const winmusic = new Audio('./audio/youwin.mp3');
+const itsatie = new Audio('./audio/itsatie.mp3');
+const music = new Audio('./audio/singlecard.mp3');
 
+function playTune(tuneName) {
+tuneName.play();
+}
 
 function onHold() {
     // debugger;
@@ -31,6 +38,8 @@ function onHold() {
         let text = "You Win";
         main.finalResult(text);
         main.values.roundComplete = true;
+        playTune(winmusic);
+        
 
     } else if (main.values.dealerValue >= 17 && main.values.dealerValue === main.values.playerValue) {
         let text = "It's a TIE";
@@ -38,6 +47,8 @@ function onHold() {
         main.values.roundStatus = "Tie";
         chips.chipsCalc(main.values.roundStatus);
         main.values.roundComplete = true;
+        playTune(itsatie);
+        
 
     } else if ((main.values.dealerValue >= 17 && main.values.dealerValue > main.values.playerValue) ||
         (main.values.dealerValue <= 21 && main.values.dealerValue > main.values.playerValue)) {
@@ -46,31 +57,35 @@ function onHold() {
         main.values.roundStatus = "Lost";
         chips.chipsCalc(main.values.roundStatus);
         main.values.roundComplete = true;
+        playTune(losemusic);
+        
 
     }
     else {
         // Adding third or more cards to the dealer's hand
-        // debugger;
+        //  debugger;
         let shuffle = document.querySelector('.deck img:nth-child(2)');
-
-        function dealerAnimation(aniName) {
-            const music = new Audio('./audio/singlecard.mp3');
-            music.play();
-            shuffle.style.cssText =
-                "animation-name:" + aniName + "; animation-duration: 0.5s; animation-iteration-count: 1; animation-direction: normal;";
+        let dealerCard = document.getElementById("imgTop");
+        function dealerAnimation() {
+            
+            
             setTimeout(function () {
 
                 for (main.values.dealerValue; main.values.dealerValue < 17;) {
-                    shuffle.style.cssText =
-                        "animation-name: willshuffle;";
+                    
                     if (main.values.roundComplete) {
                         break;
                     }
-
+                    playTune(music);
+                    
+                    shuffle.style.cssText =
+                "animation-name: dealerHit; animation-duration: 0.6s; animation-iteration-count: 1; animation-direction: normal;";
                     let cards = deal.card();
                     main.tags.dealer.appendChild(cards);
                     main.values.dealerValue += main.array.numValue[main.array.num.indexOf(deal.numOnCard)];
                     main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                    // shuffle.style.cssText =
+                    //     "animation-name: dealerHit;";
                     if (main.values.dealerValue > 21) {
                         if (main.values.dIsAce) {
                             main.values.dealerValue -= 10;
@@ -88,6 +103,7 @@ function onHold() {
                             main.finalResult(text);
                             main.values.roundStatus = "Won";
                             chips.chipsCalc(main.values.roundStatus);
+                            winmusic.play();
 
                         }
                     } else if (main.values.dealerValue >= 17 && main.values.dealerValue < 21) {
@@ -99,8 +115,10 @@ function onHold() {
                     } else if (main.values.dealerValue > main.values.playerValue) {
                         onHold();
                     } else {
-
-                        dealerAnimation("dealerHit");
+                        shuffle.style.cssText = 
+                        "animation-name: dealerHitTwo; animation-duration: 0.6s; animation-iteration-count: 1; animation-direction: normal;";
+                        dealerCard.classList.add('.dealeranime');
+                        dealerAnimation();
                         break;
                     }
 
@@ -115,4 +133,4 @@ function onHold() {
     }
 }
 
-export { onHold };
+export { onHold, playTune };

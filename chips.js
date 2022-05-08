@@ -9,10 +9,10 @@ function chipsCalc(roundStatus) {
         chipValue = main.tags.bet.value * 2
         numCountplus();   
     } else if (roundStatus == "BWon") {
-        chipValue += (main.tags.bet.value * 2.5);
+        chipValue = (main.tags.bet.value * 2.5);
         numCountplus();
     } else if (roundStatus == "Tie") {
-        chipValue += (main.tags.bet.value * 1);
+        chipValue = (main.tags.bet.value * 1);
         numCountplus();
     } else {
         main.tags.bet.value = 0;
