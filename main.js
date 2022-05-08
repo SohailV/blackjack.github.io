@@ -92,6 +92,17 @@ tags.hold.addEventListener('mouseup', buttonClick);
 tags.reset.addEventListener('mousedown', buttonClick);
 tags.reset.addEventListener('mouseup', buttonClick);
 
+tags.deal.addEventListener('touchstart', buttonClick);
+tags.deal.addEventListener('touchend', buttonClick);
+tags.hit.addEventListener('touchstart', buttonClick);
+tags.hit.addEventListener('touchend', buttonClick);
+tags.hold.addEventListener('touchstart', buttonClick);
+tags.hold.addEventListener('touchend', buttonClick);
+tags.reset.addEventListener('touchstart', buttonClick);
+tags.reset.addEventListener('touchend', buttonClick);
+
+
+
 
 export {
     array, tags, values, cardNum, cardShape, numOfCard,
