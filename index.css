@@ -63,6 +63,8 @@ body {
 }
 
 .tag {
+    font-size: 22px;
+    text-shadow: 2px 6px 5px rgb(82, 82, 82);
     margin-bottom: 30px;
     color: #fff;
 }
@@ -393,6 +395,7 @@ body {
     font-size: 30px;
     font-weight: 600;
     text-align: center;
+    min-height: 32px;
     flex-basis: 8%;
     background-color: transparent;
     animation-name: resultText;
@@ -425,6 +428,23 @@ body {
     }
 }
 
+@keyframes slider {
+    0% {
+        box-shadow: 0px 0px 10px 5px rgba(248, 250, 248, 0.548);
+    }
+    100% {
+        box-shadow: 0px 0px 20px 10px rgba(0, 68, 255, 0.514);
+    }
+}
+
+#bet {
+    animation-name: willslide;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 4;
+    animation-direction: alternate;
+}
+
 
 .main-score {
     display: flex;
@@ -434,19 +454,23 @@ body {
 }
 
 #dscore {
-    background-color: aliceblue;
+    background-color: transparent;
     visibility: hidden;
     padding: 6px;
-    border-radius: 5%;
-    width: 35%;
+    font-weight: 550;
+    text-shadow: 0px 5px 5px rgb(112, 112, 112);
+    margin-bottom: 2px;
+    
 }
 
 #pscore {
 
-    background-color: aliceblue;
+    background-color: transparent;
     padding: 6px;
-    border-radius: 5%;
-    width: 35%;
+    font-weight: 550;
+    text-shadow: 0px 5px 5px rgb(112, 112, 112);
+    
+    
 }
 
 .buttons-chips {
@@ -459,11 +483,11 @@ body {
     transform: rotateY(180deg);
 }
 
-.chips {
-    align-self: flex-end;
+.chipsinfo {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    width: 100%;
+    justify-content: space-evenly;
+    
 }
 
 .buttons {
@@ -474,30 +498,34 @@ body {
 }
 
 .single-button button {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 550;
     width: 140px;
     height: 140px;
     margin-bottom: 5px;
     border-radius: 50%;
-    border: 1px solid #84a647;
-    /* box-shadow: 10px 8px 15px #151530; */
-    background: linear-gradient(to right,#26331e,#ededed);
-    box-shadow: 0 10px 20px -5px rgba(0,0,0,.25);
+    border: none;
+    background: linear-gradient(to right, #e9c23b, #ededed);
+    box-shadow: 4px 6px 0px 1px rgba(0, 0, 0, .25);
+    transform: rotateX(25deg);
 }
 
 .single-button button:hover {
     cursor: pointer;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  }
-
-
-.single-button {
-    width: 100%;
+    
 }
+.buttonclick {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24) inset, 0 17px 50px 0 rgba(0, 0, 0, 0.19) inset !important;
+}
+
+
+/* .single-button {
+    width: 100%;
+} */
 
 label#chips {
     color: #fff;
+    text-shadow: 2px 6px 5px rgb(82, 82, 82);
 }
 
 .red {
@@ -518,9 +546,11 @@ p {
 deal:disabled {
     pointer-events: none;
 }
-.single-button button:disabled{
+
+.single-button button:disabled {
     pointer-events: none;
 }
+
 hit:disabled {
     pointer-events: none;
 }
@@ -530,9 +560,9 @@ hold:disabled {
 }
 
 #label {
-    background-color: aliceblue;
+    background-color: transparent;
     padding: 6px;
-    border-radius: 10%;
+    width: 180px;
 }
 
 .cards {
@@ -543,6 +573,7 @@ hold:disabled {
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 10%;
+    box-shadow: 6px 5px 5px #2d2d2d69;
 }
 
 .left {

@@ -48,7 +48,7 @@ tags.hit.disabled = true;
 tags.hold.disabled = true;
 tags.reset.disabled = true;
 tags.chips.textContent = "Total Chips : " + values.chips;
-tags.label.textContent = "Chips_to_Bet";
+tags.label.textContent = "Bet Value : 0";
 tags.bet.value = 0;
 tags.bet.max = values.chips;
 
@@ -56,6 +56,7 @@ tags.bet.max = values.chips;
 // slider
 function slideValue() {
     label.textContent = "Bet Value : " + bet.value;
+    bet.setAttribute('title', bet.value) ;
 }
 // Display final result.
 function finalResult(text) {
@@ -67,11 +68,30 @@ function finalResult(text) {
     tags.hold.disabled = true;
 }
 
+function buttonClick() {
+    console.log(this.id);
+let buttonClicked = document.getElementById(this.id);
+if (buttonClicked.classList == "buttonclick") {
+    buttonClicked.classList.remove('buttonclick');
+} else {
+    buttonClicked.classList.add('buttonclick');
+}
+}
+
 tags.deal.addEventListener('click', deal.dealing);
 tags.hit.addEventListener('click', deal.hitme);
 tags.hold.addEventListener('click', onHold.onHold);
 tags.reset.addEventListener('click', reset.resetAll);
 tags.bet.addEventListener('input', slideValue);
+tags.deal.addEventListener('mousedown', buttonClick);
+tags.deal.addEventListener('mouseup', buttonClick);
+tags.hit.addEventListener('mousedown', buttonClick);
+tags.hit.addEventListener('mouseup', buttonClick);
+tags.hold.addEventListener('mousedown', buttonClick);
+tags.hold.addEventListener('mouseup', buttonClick);
+tags.reset.addEventListener('mousedown', buttonClick);
+tags.reset.addEventListener('mouseup', buttonClick);
+
 
 export {
     array, tags, values, cardNum, cardShape, numOfCard,

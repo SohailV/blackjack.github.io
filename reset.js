@@ -12,7 +12,7 @@ function resetAll() {
     main.tags.dscore.style.cssText = "visibility:hidden;";
     main.tags.bet.value = 0;
     main.tags.bet.max = main.values.chips;
-    main.tags.label.textContent = "Chips_to_Bet";
+    main.tags.label.textContent = "Bet Value : 0";
     main.tags.bet.disabled = false;
     main.tags.bet.style.cssText = "color: black;";
     main.values.roundComplete = false;

@@ -55,7 +55,8 @@ function dealing() {
     // Checking chips betted amount.
     if (isNaN(main.tags.bet.value) || main.tags.bet.value == 0 || main.tags.bet.value > main.values.chips ||
         main.tags.bet.value < 0) {
-        main.tags.label.textContent = "Enter a valid Amount";
+        document.querySelector('#bet').style.cssText = "animation-name: slider;";
+        main.tags.label.textContent = "Use the Slider to Bet";
         main.tags.label.style.cssText = "color:red;";
         let text = "Enter Bet Amount";
         main.finalResult(text);

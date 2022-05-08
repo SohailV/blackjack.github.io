@@ -21,12 +21,12 @@
         background-size: cover;
     }
 
-    #chipsInput {
+    /* #chipsInput {
         display: flex;
         flex-direction: column;
         width: 75%;
         margin-top: 10px;
-    }
+    } */
 
     #label {
         margin-bottom: 10px;
@@ -89,7 +89,7 @@
         width: 15%;
         margin-bottom: 5px;
     }
-    .chips {
+    .chipsinfo {
         margin-bottom: 10px;
         align-self: flex-start;
         flex-direction: row;
@@ -98,14 +98,14 @@
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    #chipsInput {
+    /* #chipsInput {
         display: flex;
         flex-direction: column;
         flex-basis: 30%;
         flex-wrap: wrap;
         
         
-    }
+    } */
     #label {
         padding: 2px;
         margin-bottom: 10px; 
@@ -134,8 +134,14 @@
         justify-content: center;
         align-items: center;
       } */
-      #pscore, #dscore {
-        width: 30%;
+      
+
+      #bet {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+        position: absolute;
+        bottom: 220px;
+        right: 0px;
       }
 
       @keyframes dealCard {
