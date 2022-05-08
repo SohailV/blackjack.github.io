@@ -47,7 +47,7 @@ let shapeOfCard = () => array.shape[cardShape()];
 tags.hit.disabled = true;
 tags.hold.disabled = true;
 tags.reset.disabled = true;
-tags.chips.textContent = "Total Chips : " + values.chips;
+tags.chips.textContent = values.chips;
 tags.label.textContent = "Bet Value : 0";
 tags.bet.value = 0;
 tags.bet.max = values.chips;
@@ -69,7 +69,7 @@ function finalResult(text) {
 }
 
 function buttonClick() {
-    console.log(this.id);
+    // console.log(this.id);
 let buttonClicked = document.getElementById(this.id);
 if (buttonClicked.classList == "buttonclick") {
     buttonClicked.classList.remove('buttonclick');

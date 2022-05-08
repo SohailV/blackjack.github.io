@@ -11,6 +11,7 @@ function resetAll() {
     main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
     main.tags.dscore.style.cssText = "visibility:hidden;";
     main.tags.bet.value = 0;
+    main.tags.bet.setAttribute('title', bet.value) ;
     main.tags.bet.max = main.values.chips;
     main.tags.label.textContent = "Bet Value : 0";
     main.tags.bet.disabled = false;

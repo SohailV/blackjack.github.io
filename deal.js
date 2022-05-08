@@ -135,17 +135,32 @@ function dealing() {
         main.tags.deal.disabled = true;
         main.tags.hit.disabled = false;
         main.tags.hold.disabled = false;
-        // main.tags.dscore.style.cssText = "display:none;";
-        // main.tags.label.textContent = "Chips_Betted";
         main.tags.label.style.cssText = "color:blue;";
-        main.values.chips -= main.tags.bet.value;
-        main.tags.chips.textContent = "Total Chips : " + main.values.chips;
-        // main.tags.bet.max = main.values.chips;
+        // main.values.chips -= main.tags.bet.value;
+        // main.tags.chips.textContent = main.values.chips;
+        numCountMinus();
         main.tags.bet.disabled = true;
         main.tags.bet.style.cssText = "color: red;";
 
     }
 }
+
+//counter function
+
+function numCountMinus() {
+    // debugger;
+    let betValue = main.tags.bet.value;
+    let numcounter = setInterval(() => {
+        main.values.chips--;
+        betValue--;
+        main.tags.chips.textContent = main.values.chips;
+        if(betValue == 0) {
+            clearInterval(numcounter);
+        }
+    }, 10);
+}
+    
+
 // Hit function, if the player proceeds for the next card.
 function hitme() {
     // debugger;

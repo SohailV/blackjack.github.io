@@ -523,10 +523,12 @@ body {
     width: 100%;
 } */
 
-label#chips {
+.chipsinfo #chiplabel {
     color: #fff;
     text-shadow: 2px 6px 5px rgb(82, 82, 82);
+    /* transition: all 1s; */
 }
+
 
 .red {
     color: red;
