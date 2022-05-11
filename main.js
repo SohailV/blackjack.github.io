@@ -78,6 +78,14 @@ if (buttonClicked.classList == "buttonclick") {
 }
 }
 
+window.addEventListener("load",function() {
+	// Set a timeout...
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
+});
+
 tags.deal.addEventListener('click', deal.dealing);
 tags.hit.addEventListener('click', deal.hitme);
 tags.hold.addEventListener('click', onHold.onHold);
