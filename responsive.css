@@ -40,6 +40,9 @@
 /* Wide Mobile layout */
 
 @media only screen and (max-width: 767px) {
+    html {
+        height: 100vh;
+    }
     .container {
         width: 90%;
     }
@@ -49,6 +52,7 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        height: 100%;
     }
     .header {
         flex-direction: column-reverse;
