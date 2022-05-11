@@ -19,11 +19,11 @@ function card(idNo) {
 
     numOnCard = main.numOfCard();
     // numOnCard = main.array.num[2];
-    // if(idNo == 2) {
+    // if (idNo == 2) {
     //     numOnCard = main.array.num[10];
-    // }else if(idNo == 4) {
+    // } else if (idNo == 4) {
     //     numOnCard = main.array.num[0];
-    // }else {
+    // } else {
     //     numOnCard = main.numOfCard();
     // }
     let shapeOnCard = main.shapeOfCard();
@@ -152,11 +152,17 @@ function numCountMinus() {
     // debugger;
     let betValue = main.tags.bet.value;
     let numcounter = setInterval(() => {
-        main.values.chips--;
-        betValue--;
-        main.tags.chips.textContent = main.values.chips;
-        if (betValue == 0) {
+
+        if (betValue < 10 && betValue > 0) {
+            main.values.chips--;
+            betValue--;
+            main.tags.chips.textContent = main.values.chips;
+        } else if (betValue == 0) {
             clearInterval(numcounter);
+        }else {
+            main.values.chips -= 10 ;
+            betValue -= 10;
+            main.tags.chips.textContent = main.values.chips;
         }
     }, 10);
 }
@@ -207,10 +213,10 @@ function hitme() {
             let text = "Lets check the dealer";
             main.finalResult(text);
             onHold.onHold();
-            
+
         } else if (numOnCard === "A") {
             main.values.pIsAce = true;
-            
+
         }
 
     }
