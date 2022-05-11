@@ -23,7 +23,7 @@ function chipsCalc(roundStatus) {
 }
 
 function numCountplus() {
-     debugger;
+    //  debugger;
     let numcounter = setInterval(() => {
 
         if ( chipValue < 10 && chipValue > 0) {
