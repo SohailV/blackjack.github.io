@@ -21,13 +21,6 @@
         background-size: cover;
     }
 
-    /* #chipsInput {
-        display: flex;
-        flex-direction: column;
-        width: 75%;
-        margin-top: 10px;
-    } */
-
     #label {
         margin-bottom: 10px;
         padding: 4px 0px;
@@ -54,6 +47,7 @@
         background-size: cover;
         -webkit-background-size:cover;
         height: 100%;
+        overflow: hidden;
     }
     .header {
         flex-direction: column-reverse;
@@ -103,22 +97,12 @@
         justify-content: space-between;
         flex-wrap: wrap;
     }
-    /* #chipsInput {
-        display: flex;
-        flex-direction: column;
-        flex-basis: 30%;
-        flex-wrap: wrap;
-        
-        
-    } */
+   
     #label {
         padding: 2px;
         margin-bottom: 10px; 
     }
     .buttons {
-        /* display: flex;
-        justify-content: space-between; */
-        /* width: 100%; */
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -129,18 +113,7 @@
         width: 100px;
         height: 100px;
     }
-    /* .play-buttons {
-        display: flex;
-        justify-content: space-between;
-      } */
-      /* .deal-single {
-        ! width: 32%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      } */
       
-
       #bet {
         -webkit-transform: rotate(270deg);
         transform: rotate(270deg);
