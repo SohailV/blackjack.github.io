@@ -47,7 +47,7 @@
         background-size: cover;
         -webkit-background-size:cover;
         height: 100%;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
     .header {
         flex-direction: column-reverse;
