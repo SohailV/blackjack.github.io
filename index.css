@@ -682,3 +682,8 @@ hold:disabled {
     padding: 10px;
     text-shadow: #7989bc 2px 3px 5px;
 }
+
+.right-margin {
+    margin-right: -10%;
+    transition: 1s;
+}

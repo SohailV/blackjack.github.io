@@ -69,7 +69,7 @@ function onHold() {
         function dealerAnimation() {
             
             
-            setTimeout(function () {
+            setTimeout(() => {
 
                 for (main.values.dealerValue; main.values.dealerValue < 17;) {
                     
@@ -84,6 +84,15 @@ function onHold() {
                     main.tags.dealer.appendChild(cards);
                     main.values.dealerValue += main.array.numValue[main.array.num.indexOf(deal.numOnCard)];
                     main.tags.dscore.textContent = "Dealer Total: " + main.values.dealerValue;
+                    
+                    //cards collapse
+                    const isMobile = window.matchMedia("only screen and (max-width: 767px)").matches;
+                    if (isMobile && main.tags.dealer.childNodes.length >= 4) {
+                        let dealerNodes = main.tags.dealer.childNodes;
+                        dealerNodes.forEach((element) => {
+                          element.classList.add("right-margin");
+                        });
+                      }
                     // shuffle.style.cssText =
                     //     "animation-name: dealerHit;";
                     if (main.values.dealerValue > 21) {
@@ -132,6 +141,7 @@ function onHold() {
         dealerAnimation();
 
     }
+    
 }
 
 export { onHold, playTune };
